@@ -1,0 +1,90 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="LR2Nexus.Views.MainWindow"
+        Title="Lunatic Rave 2 Nexus"
+        Width="1280"
+        Height="720"
+        Background="#FFFFFF">
+    <Window.Styles>
+        <Style Selector="Button.ActionBtn">
+            <Setter Property="Width" Value="140"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    
+        <Style Selector="Button.ActionBtn /template/ ContentPresenter">
+            <Setter Property="Background" Value="#F8F9FA"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/> 
+        </Style>
+    
+        <Style Selector="Button.ActionBtn:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#E9ECEF"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+        </Style>
+    </Window.Styles>
+    <Grid ColumnDefinitions="Auto, *, Auto">
+        <Canvas>
+            <TextBlock Canvas.Left="40"
+                Canvas.Top="30"
+                Text="Lunatic Rave 2 NEXUS"
+                FontWeight="ExtraBold"
+                FontSize="42"/>
+        </Canvas>
+        <Grid ColumnDefinitions="Auto, *, Auto"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Width="1200"
+            Margin="40,0,40,30">
+            <StackPanel Grid.Column="0" Spacing="5">
+                <Grid ColumnDefinitions="Auto, *, Auto" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Button Grid.Column="0"
+                        Classes="ActionBtn"
+                        Content="Manage Profile"
+                        Click="OnManageProfileClick"/>
+                    <Border Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        Width="250"
+                        CornerRadius="4"
+                        Margin="5,0,0,0"
+                        Background="#E7E7E7">
+                        <TextBlock VerticalAlignment="Center" FontSize="15" Margin="15,0">
+                            <Run Text="Profile : " FontWeight="Bold" />
+                            <Run Text="{Binding CurrentProfileName, TargetNullValue='No Profile'}" Foreground="Gray" />
+                        </TextBlock>
+                    </Border>
+                </Grid>
+                <Grid ColumnDefinitions="Auto, *, Auto" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Button Grid.Column="0" 
+                        Classes="ActionBtn"
+                        Content="Set LR2 Path"
+                        Click="OnSelectPathClick"/>
+                    <Border Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        MinWidth="250"
+                        MaxWidth="400"
+                        CornerRadius="4"
+                        Margin="5,0,0,0"
+                        Background="#E7E7E7">
+                        <TextBlock TextTrimming="CharacterEllipsis" VerticalAlignment="Center" FontSize="15" Margin="15,0">
+                            <Run Text="LR2 Path : " FontWeight="Bold" />
+                            <Run Text="{Binding Lr2Path, TargetNullValue='No path selected'}" Foreground="Gray" />
+                        </TextBlock>
+                    </Border>
+                </Grid>
+                <Button Name="LaunchGameButton"
+                    Classes="ActionBtn"
+                    Width="250"
+                    Height="60"
+                    Content="Launch LR2"
+                    FontWeight="ExtraBold"
+                    FontSize="25"
+                    Click="OnLaunchButtonClick"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
