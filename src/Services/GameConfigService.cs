@@ -39,6 +39,12 @@ namespace LR2Nexus.Services
 		public static void LoadGameConfig()
 		{
 			var path = LauncherSettingManager.GetLR2ConfigPath();
+			if (string.IsNullOrEmpty(path))
+			{
+				Current = new GameConfig();
+				return;
+			}
+
 			if (!File.Exists(path))
 			{
 				string resourceName = "LR2Nexus.src.Assets.configTemplate.xml";
@@ -47,7 +53,7 @@ namespace LR2Nexus.Services
 				using Stream? stream = assembly.GetManifestResourceStream(resourceName)
 					?? throw new FileNotFoundException($"Cannot found embedded build resource : {resourceName}");
 				string? directory = Path.GetDirectoryName(path);
-				if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+				if (!string.IsNullOrEmpty(directory))
 				{
 					Directory.CreateDirectory(directory);
 				}
