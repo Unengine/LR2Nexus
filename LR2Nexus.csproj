@@ -10,12 +10,12 @@
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<PublishSingleFile>true</PublishSingleFile>
 		<SelfContained>true</SelfContained>
-		<PublishTrimmed>false</PublishTrimmed>
+		<PublishTrimmed>true</PublishTrimmed>
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-        <CompilerGeneratedFilesOutputPath>obj/Generated</CompilerGeneratedFilesOutputPath>
-
         <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
         <EnablePreviewFeatures>true</EnablePreviewFeatures>
+		<PublishReadyToRun>true</PublishReadyToRun>
+		<CompilerGeneratedFilesOutputPath>obj/Generated</CompilerGeneratedFilesOutputPath>
     </PropertyGroup>
 
     <ItemGroup>
