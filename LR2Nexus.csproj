@@ -10,7 +10,7 @@
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<PublishSingleFile>true</PublishSingleFile>
 		<SelfContained>true</SelfContained>
-		<PublishTrimmed>true</PublishTrimmed>
+		<PublishTrimmed>false</PublishTrimmed> <!--Setting it true makes serializers broken.-->
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
         <EnablePreviewFeatures>true</EnablePreviewFeatures>

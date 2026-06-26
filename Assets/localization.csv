@@ -30,7 +30,7 @@
 "PasswordConditionContent2","If you use the old LR2.exe later, you should use that password.","예전 LR2.exe를 사용하게 된다면, 그 비밀번호를 사용해야 합니다.","将来古いLR2.exeを使用する場合、そのパスワードを使用する必要があります。"
 "PasswordReset","Password Reset","비밀번호 초기화","パスワードリセット"
 "SetLR2PathFirst","Set LR2 Path First!","LR2 경로를 먼저 설정하세요!","先にLR2パスを設定してください！"
-"BMSDirectores","BMS Pathes","BMS 경로 리스트","BMS パスリスト"
+"BMSDirectores","Drag and drop folders to add BMS paths.","폴더를 드래그 앤 드롭하여 BMS 경로를 추가","フォルダをドラッグ＆ドロップしてBMSのパスを追加"
 "AddBMSPathTitle","Add new BMS path (You can add multiple paths.)","새로운 BMS 경로 추가 (동시에 여러 폴더를 추가할 수 있습니다.)","新しいBMSパスを追加 (複数のフォルダを同時に追加可能)"
 "AddBMSPathContentFormat","Added {0} directories.","{0}개의 경로를 추가했습니다.","{0} 個のディレクトリを追加しました。"
 "AddBMSPathContentWithExcludesFormat","Added {0} directories. (Excluded {1} duplicated pathes.)","{0}개의 경로를 추가했습니다. (중복 {1}개 제외)","{0} 個のディレクトリを追加しました。(重複 {1} 個を除外)"
