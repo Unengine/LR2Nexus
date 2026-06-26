@@ -2,9 +2,9 @@
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
+using LR2Nexus.I18n;
 using LR2Nexus.Services;
 using LR2Nexus.ViewModels;
-using LR2Nexus.I18n;
 
 namespace LR2Nexus.Views;
 
@@ -122,6 +122,15 @@ public partial class MainWindow : Window
 				}
 
 				currentId = id;
+			}
+
+			if (GameConfigService.Current.Jukebox.Paths.Count == 0)
+			{
+				await AlertWindow.PromptAsync(
+					this,
+					I18nManager.Instance["Error"],
+					I18nManager.Instance["ErrorEmptyJukeboxContent"]);
+				return;
 			}
 
 			LaunchGameButton.IsEnabled = false;
