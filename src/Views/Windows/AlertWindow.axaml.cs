@@ -1,0 +1,47 @@
+using Avalonia.Controls;
+using Avalonia.Interactivity;
+using LR2Nexus.Utils;
+using LR2Nexus.ViewModels;
+
+namespace LR2Nexus.Views;
+
+public partial class AlertWindow : Window
+{
+	private readonly AlertWindowViewModel _viewModel = new();
+
+	public AlertWindow()
+	{
+		InitializeComponent();
+		DataContext = _viewModel;
+	}
+
+	private void OnConfirmClick(object sender, RoutedEventArgs e)
+	{
+		Close(true);
+	}
+
+	public static async Task<bool?> PromptAsync(Window owner, string title, params string[] messages)
+	{
+		var width = owner.Width * 0.3;
+		var height = owner.Height * 0.3;
+		var win = new AlertWindow()
+		{
+			Title = title,
+			Width = width,
+			MinHeight = height
+		};
+
+		var textBlock = new TextBlock()
+		{
+			TextWrapping = Avalonia.Media.TextWrapping.Wrap,
+			TextAlignment = Avalonia.Media.TextAlignment.Center,
+			VerticalAlignment = Avalonia.Layout.VerticalAlignment.Stretch,
+			HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch,
+			LineSpacing = 2,
+		};
+		InlineTextParser.AppendFormattedText(textBlock.Inlines!, messages);
+
+		win.FindControl<ContentControl>("MessageContainer")!.Content = textBlock;
+		return await win.ShowDialog<bool>(owner);
+	}
+}

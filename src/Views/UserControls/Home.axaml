@@ -1,0 +1,93 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:LR2Nexus.ViewModels"
+             xmlns:i18n="clr-namespace:LR2Nexus.I18n"
+             mc:Ignorable="d" d:DesignWidth="960" d:DesignHeight="620"
+             x:Class="LR2Nexus.Views.Home"
+             x:DataType="vm:HomeViewModel"
+             Background="Transparent">
+    <Grid Margin="16,9,16,9">
+        <StackPanel Spacing="8" VerticalAlignment="Top">
+            
+            <Grid ColumnDefinitions="150, 600, *" Height="35">
+                <Border Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="LightGray" BorderThickness="0,0,0,1" 
+                        VerticalAlignment="Bottom" Margin="0,0,40,0"/>
+                
+                <TextBlock Grid.Column="0" Text="{i18n:Translate Player}" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                <ComboBox Grid.Column="1" 
+                          Name="Profiles"
+                          ItemsSource="{Binding AvailableProfiles}" 
+                          SelectedItem="{Binding SelectedPlayer}"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"
+                          Margin="0,0,40,0"
+                          Background="Transparent">
+                </ComboBox>
+                
+                <Grid Grid.Column="2" ColumnDefinitions="*, 4, *">
+                    <Button Grid.Column="0"
+                            Classes="ActionButton"
+                            Content="{i18n:Translate Add}"
+                            Click="OnAddProfileClick"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            FontSize="15"/>
+                    <Button Grid.Column="2"
+                            Classes="ActionButton"
+                            Content="{i18n:Translate Delete}"
+                            Click="OnDeleteProfileClick"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            FontSize="15"/>
+                </Grid>
+            </Grid>
+
+            <Grid ColumnDefinitions="150, 600, *" Height="35">
+                <Border Grid.Column="0" Grid.ColumnSpan="2" 
+                        BorderBrush="LightGray" BorderThickness="0,0,0,1" 
+                        VerticalAlignment="Bottom" Margin="0,0,40,0"/>
+                
+                <TextBlock Grid.Column="0"
+                           Text="{i18n:Translate Resolution}"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="5">
+                    <TextBox Text="{Binding WindowSizeX}"
+                             Width="100"
+                             TextChanged="OnResolutionXTextChanged"
+                             TextAlignment="Center"/>
+                    <TextBlock Text="x" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBox Text="{Binding WindowSizeY}"
+                             Width="100"
+                             TextChanged="OnResolutionYTextChanged"
+                             TextAlignment="Center"/>
+                </StackPanel>
+                <Button Grid.Column="2"
+                        Classes="ActionButton"
+                        Content="{Binding ScreenModeText}"
+                        Click="OnScreenModeClick"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch" FontSize="15"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="150, 600, *" Height="35">
+                <Border Grid.Column="0" Grid.ColumnSpan="2" 
+                        BorderBrush="LightGray" BorderThickness="0,0,0,1" 
+                        VerticalAlignment="Bottom" Margin="0,0,40,0"/>
+                
+                <TextBlock Grid.Column="0"
+                           Text="{i18n:Translate LR2Path}"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="{Binding Lr2Path, TargetNullValue={i18n:Translate ErrorPathNotSet}}" 
+                           VerticalAlignment="Center" Foreground="Gray"/>
+                <Button Grid.Column="2" Classes="ActionButton" Content="{i18n:Translate SetLR2Path}"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="15"
+                        Click="OnSelectPathClick"/>
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

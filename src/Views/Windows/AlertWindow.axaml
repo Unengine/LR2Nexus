@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        x:Class="LR2Nexus.Views.AlertWindow"
+        xmlns:vm="clr-namespace:LR2Nexus.ViewModels"
+        Title="InputWindow"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False"
+        SizeToContent="Height"
+        x:DataType="vm:AlertWindowViewModel"
+        d:DesignWidth="384"
+        d:DesignHeight="216">
+        <Grid Name="RootGrid" Margin="20" RowDefinitions="Auto, Auto, *" HorizontalAlignment="Center">
+            <ContentControl Grid.Row="0"
+                            Name="MessageContainer"
+                            MaxHeight="140"/>
+            
+            <Button Grid.Row="2"
+                    Name="ConfirmButton"
+                    Classes="ActionButton"
+                    Width="100"
+                    Content="OK"
+                    Click="OnConfirmClick"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"/>
+        </Grid>
+</Window>

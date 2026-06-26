@@ -1,0 +1,164 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:services="using:LR2Nexus.Services"
+		xmlns:vm="clr-namespace:LR2Nexus.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
+		x:Class="LR2Nexus.Views.MainWindow"
+		x:DataType="vm:MainWindowViewModel"
+		xmlns:local="clr-namespace:LR2Nexus.Views"
+		xmlns:i18n="clr-namespace:LR2Nexus.I18n"
+		Title="Lunatic Rave 2 Nexus"
+		MinWidth="640"
+		MinHeight="360"
+		CanResize="False"
+		Background="#FFFFFF"
+		WindowStartupLocation="CenterScreen">
+	<Window.Resources>
+        <local:MenuConverter x:Key="MenuConverter"/>
+    </Window.Resources>
+	<Window.Styles>
+		<Style Selector="Button.ActionButton">
+		    <Setter Property="Background" Value="White"/>
+		    <Setter Property="BorderBrush" Value="DimGray"/>
+		    <Setter Property="BorderThickness" Value="1"/>
+		    <Setter Property="CornerRadius" Value="2"/>
+		    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+		    <Setter Property="VerticalContentAlignment" Value="Center"/>
+		    
+		    <Setter Property="Template">
+		        <ControlTemplate>
+		            <Border Name="PART_Border"
+		                    Background="{TemplateBinding Background}"
+		                    BorderBrush="{TemplateBinding BorderBrush}"
+		                    BorderThickness="{TemplateBinding BorderThickness}"
+		                    CornerRadius="{TemplateBinding CornerRadius}">
+		                <ContentPresenter Name="PART_ContentPresenter"
+		                                  Content="{TemplateBinding Content}"
+		                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+		                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+		            </Border>
+		        </ControlTemplate>
+		    </Setter>
+		</Style>
+		<Style Selector="Button.ActionButton:pointerover">
+		    <Setter Property="Background" Value="#E1E3E5"/>
+			<Setter Property="BorderBrush" Value="Black"/> 
+		</Style>
+		<Style Selector="Button.ActionButton /template/ ContentPresenter#PART_ContentPresenter">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="Transparent"/>
+		</Style>
+		<Style Selector="Border.MenuBorder">
+			<Setter Property="Background" Value="Transparent" />
+			<Setter Property="Cursor" Value="Hand"/>
+		</Style>
+
+		<Style Selector="Border.MenuBorder:disabled">
+			<Setter Property="Background" Value="#150000FF" />
+			<Setter Property="Cursor" Value="Arrow" />
+		</Style>
+	</Window.Styles>
+	<Viewbox Stretch="Uniform">
+		<Grid Width="1280" Height="720" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="280"/>
+				<ColumnDefinition Width="*"/>  
+			</Grid.ColumnDefinitions>
+			<Border Grid.Column="0" Width="280" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+				<Border BorderThickness="1"
+						BorderBrush="#E0E0E0"
+						Padding="0,30,0,0">
+					<Grid>
+						<StackPanel Orientation="Vertical">
+							<TextBlock Text="LunaticRave2 NEXUS"
+									   Height="58"
+									   HorizontalAlignment="Center"
+									   FontSize="23"
+									   FontWeight="Bold"/>
+							<StackPanel Orientation="Vertical" Margin="10">
+								<Border
+									CornerRadius="0"
+									BorderThickness="0,0,0,1"
+									BorderBrush="Gray"
+									Height="30">
+									<TextBlock Text="{Binding [Menu], Source={x:Static i18n:I18nManager.Instance}}"
+										FontWeight="SemiBold"
+										FontSize="16"
+										Margin="8,0,8,0"/>
+								</Border>
+								<Border Classes="MenuBorder" IsEnabled="{Binding !IsHomeMenu}" Tag="HomeMenu" Name="HomeMenu" Height="40" PointerPressed="OnMenuClick">
+									<TextBlock Text="{Binding [Home], Source={x:Static i18n:I18nManager.Instance}}"
+											   FontSize="16" Margin="8,0,8,0" VerticalAlignment="Center"/>
+								</Border>
+								<Border Classes="MenuBorder" IsEnabled="{Binding !IsJukeboxMenu}" Tag="JukeboxMenu" Name="JukeboxMenu" Height="40" PointerPressed="OnMenuClick">
+									<TextBlock Text="{Binding [Jukebox], Source={x:Static i18n:I18nManager.Instance}}"
+											   FontSize="16" Margin="8,0,8,0" VerticalAlignment="Center"/>
+								</Border>
+								<Border Classes="MenuBorder" IsEnabled="{Binding !IsPlayOptionMenu}" Tag="PlayOptionMenu" Name="PlayOptionMenu" Height="40" PointerPressed="OnMenuClick">
+									<TextBlock Text="{Binding [PlayOption], Source={x:Static i18n:I18nManager.Instance}}"
+											   FontSize="16" Margin="8,0,8,0" VerticalAlignment="Center"/>
+								</Border>
+								<Border Classes="MenuBorder" IsEnabled="{Binding !IsSystemOptionMenu}" Tag="SystemOptionMenu" Name="SystemOptionMenu" Height="40" PointerPressed="OnMenuClick">
+									<TextBlock Text="{Binding [SystemOption], Source={x:Static i18n:I18nManager.Instance}}"
+												  FontSize="16" Margin="8,0,8,0" VerticalAlignment="Center"/>
+								</Border>
+							</StackPanel>
+						</StackPanel>
+						<StackPanel Orientation="Vertical" 
+						            VerticalAlignment="Bottom" 
+						            Margin="9,0,9,20">
+								<StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+								    <ComboBox Name="LanguageComboBox"
+								              ItemsSource="{Binding Languages}"
+								              SelectedItem="{Binding CurrentLanguage}"
+								              Width="150"
+								              HorizontalAlignment="Left">
+								        <ComboBox.ItemTemplate>
+								            <DataTemplate>
+								                <TextBlock Text="{Binding DisplayName}" />
+								            </DataTemplate>
+								        </ComboBox.ItemTemplate>
+								    </ComboBox>
+								
+								    <TextBlock Text="🌐" 
+								               FontSize="20" 
+								               Margin="5,0,0,0"
+								               VerticalAlignment="Center"/>
+								</StackPanel>
+						    <Button Name="LaunchGameButton"
+									Click="OnLaunchButtonClick"
+						            Classes="ActionButton"
+						            Content="{Binding [LaunchLR2], Source={x:Static i18n:I18nManager.Instance}}"
+						            FontWeight="Bold"
+						            FontSize="25"
+						            Height="60"
+						            CornerRadius="2"
+						            HorizontalAlignment="Stretch"/>
+						</StackPanel>
+					</Grid>
+				</Border>
+			</Border>
+			<Border Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="20,30,20,20">
+				<Grid RowDefinitions="Auto, 20, *">
+					<TextBlock Grid.Row="0"
+							   Text="{Binding CurrentMenuName, FallbackValue='Home'}"
+							   Height="25"
+							   FontSize="20"
+							   FontWeight="SemiBold"
+							   VerticalAlignment="Center"/>
+					<Border Grid.Row="2"
+							BorderBrush="LightGray"
+							BorderThickness="1">
+						<ContentControl Content="{Binding CurrentMenu, Converter={StaticResource MenuConverter}}"
+										HorizontalAlignment="Stretch"
+										VerticalAlignment="Stretch"
+										HorizontalContentAlignment="Stretch"
+										VerticalContentAlignment="Stretch"/>
+					</Border>
+				</Grid>
+			</Border>
+		</Grid>
+	</Viewbox>
+</Window>

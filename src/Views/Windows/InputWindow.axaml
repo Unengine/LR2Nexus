@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        x:Class="LR2Nexus.Views.InputWindow"
+        xmlns:vm="clr-namespace:LR2Nexus.ViewModels"
+        Title="InputWindow"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False"
+        SizeToContent="Height"
+        x:DataType="vm:InputWindowViewModel"
+        d:DesignWidth="384"
+        d:DesignHeight="216">
+        <DockPanel Margin="20" LastChildFill="True">
+            <Button DockPanel.Dock="Bottom"
+                    Name="ConfirmButton"
+                    Classes="ActionButton"
+                    Content="Confirm"
+                    Click="OnConfirmClick"
+                    IsEnabled="{Binding IsValid}"
+                    HorizontalAlignment="Center"
+                    Margin="0,20,0,0" />
+        
+            <StackPanel DockPanel.Dock="Top" VerticalAlignment="Top">
+                <ContentControl Name="MessageContainer"
+                                VerticalAlignment="Top" />
+        
+                <TextBox Name="InputField"
+                         Text="{Binding InputValue, Mode=TwoWay}"
+                         HorizontalAlignment="Stretch" />
+            </StackPanel>
+        </DockPanel>
+</Window>
