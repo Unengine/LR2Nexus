@@ -2,7 +2,7 @@
 
 [English](README.md) | [한국어](README.ko.md) | [日本語](README.ja.md)
 
-A new generation launcher for OpenLR2.
+A new generation launcher for [OpenLR2](https://github.com/GOMazk/OpenLR2)
 
 ## About
 LR2Nexus is a modern, lightweight launcher designed for the OpenLR2 ecosystem. It provides a streamlined interface to manage your settings and launch the game with ease.
