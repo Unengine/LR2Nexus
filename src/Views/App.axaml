@@ -2,7 +2,7 @@
 			xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:local="using:LR2Nexus.Services"
 			x:Class="LR2Nexus.Views.App"
-			RequestedThemeVariant="Default">
+			RequestedThemeVariant="Light">
     
     <Application.Resources>
         <GeometryGroup x:Key="AddFolderIcon">
