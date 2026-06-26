@@ -26,20 +26,16 @@
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
         <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.9" />
     </ItemGroup>
-
+	
 	<ItemGroup>
-		<AvaloniaResource Include="Assets\**" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="src\Assets\configTemplate.xml" />
+	  <AvaloniaResource Include="src\Assets\Fonts\*" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <EmbeddedResource Include="src\Assets\configTemplate.xml" />
 	  <EmbeddedResource Include="src\Assets\playerdbTemplate.db" />
 	</ItemGroup>
-
+	
 	<ItemGroup>
 		<None Update="Assets\**\*">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

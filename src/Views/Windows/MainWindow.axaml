@@ -84,7 +84,7 @@
 									BorderBrush="Gray"
 									Height="30">
 									<TextBlock Text="{Binding [Menu], Source={x:Static i18n:I18nManager.Instance}}"
-										FontWeight="SemiBold"
+										FontWeight="Bold"
 										FontSize="16"
 										Margin="8,0,8,0"/>
 								</Border>
@@ -121,8 +121,7 @@
 								            </DataTemplate>
 								        </ComboBox.ItemTemplate>
 								    </ComboBox>
-								
-								    <TextBlock Text="🌐" 
+									<TextBlock Text="🌐" 
 								               FontSize="20" 
 								               Margin="5,0,0,0"
 								               VerticalAlignment="Center"/>
@@ -146,7 +145,7 @@
 							   Text="{Binding CurrentMenuName, FallbackValue='Home'}"
 							   Height="25"
 							   FontSize="20"
-							   FontWeight="SemiBold"
+							   FontWeight="Bold"
 							   VerticalAlignment="Center"/>
 					<Border Grid.Row="2"
 							BorderBrush="LightGray"

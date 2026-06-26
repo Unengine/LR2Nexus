@@ -11,7 +11,7 @@
     <DockPanel Margin="16,9,16,9" LastChildFill="True">
         <StackPanel DockPanel.Dock="Top" Spacing="8" Margin="0,0,0,9">
             <Grid ColumnDefinitions="*, 120, 120" Height="35" ColumnSpacing="5">
-                <TextBlock Grid.Column="0" Text="{i18n:Translate BMSDirectores}" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" Text="{i18n:Translate BMSDirectores}" FontWeight="Bold" VerticalAlignment="Center"/>
                 <Button Grid.Column="1"
                         Classes="ActionButton"
                         Content="{i18n:Translate Add}"
@@ -30,7 +30,7 @@
         <Grid>
             <Path Data="{StaticResource AddFolderIcon}" 
                   Name="AddFolderIcon"
-                  Width="160" Height="160"
+                  Width="300" Height="300"
                   Fill="Black" 
                   Stretch="Uniform" 
                   Opacity="0" />
@@ -40,7 +40,7 @@
                      DragDrop.Drop="OnItemDropped"
                      DragDrop.DragOver="OnDragOver"
                      DragDrop.DragLeave="OnDragLeave"
-                     Background="#50D0D0D0"
+                     Background="#10000000"
                      CornerRadius="4"
                      Padding="9,6">
                 <ListBox.Styles>

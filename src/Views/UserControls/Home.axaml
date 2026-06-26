@@ -15,7 +15,7 @@
                 <Border Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="LightGray" BorderThickness="0,0,0,1" 
                         VerticalAlignment="Bottom" Margin="0,0,40,0"/>
                 
-                <TextBlock Grid.Column="0" Text="{i18n:Translate Player}" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" Text="{i18n:Translate Player}" FontWeight="Bold" VerticalAlignment="Center"/>
                 <ComboBox Grid.Column="1" 
                           Name="Profiles"
                           ItemsSource="{Binding AvailableProfiles}" 
@@ -51,7 +51,7 @@
                 
                 <TextBlock Grid.Column="0"
                            Text="{i18n:Translate Resolution}"
-                           FontWeight="SemiBold"
+                           FontWeight="Bold"
                            VerticalAlignment="Center"/>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="5">
                     <TextBox Text="{Binding WindowSizeX}"
@@ -79,7 +79,7 @@
                 
                 <TextBlock Grid.Column="0"
                            Text="{i18n:Translate LR2Path}"
-                           FontWeight="SemiBold"
+                           FontWeight="Bold"
                            VerticalAlignment="Center"/>
                 <TextBlock Grid.Column="1" Text="{Binding Lr2Path, TargetNullValue={i18n:Translate ErrorPathNotSet}}" 
                            VerticalAlignment="Center" Foreground="Gray"/>
@@ -87,7 +87,6 @@
                         HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="15"
                         Click="OnSelectPathClick"/>
             </Grid>
-
         </StackPanel>
     </Grid>
 </UserControl>

@@ -1,13 +1,10 @@
 using Avalonia.Controls;
 using Avalonia.Input;
+using Avalonia.Media;
 using Avalonia.Platform.Storage;
 using LR2Nexus.I18n;
-using LR2Nexus.Models;
 using LR2Nexus.Services;
 using LR2Nexus.ViewModels;
-using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
-using Tmds.DBus.Protocol;
 
 namespace LR2Nexus.Views;
 
@@ -111,15 +108,18 @@ public partial class Jukebox : UserControl
 		}
 
 		AddFolderIcon.Opacity = 0;
+		PathListBox.Background = Brush.Parse("#10000000");
 	}
 
 	private void OnDragOver(object? sender, Avalonia.Input.DragEventArgs e)
 	{
 		AddFolderIcon.Opacity = 0.7;
+		PathListBox.Background = Brush.Parse("#25000000");
 	}
 
 	private void OnDragLeave(object? sender, DragEventArgs e)
 	{
 		AddFolderIcon.Opacity = 0;
+		PathListBox.Background = Brush.Parse("#10000000");
 	}
 }
