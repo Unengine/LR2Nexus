@@ -2,7 +2,6 @@
 using LR2Nexus.I18n;
 using LR2Nexus.Models;
 using LR2Nexus.Services;
-using System.ComponentModel.DataAnnotations;
 
 namespace LR2Nexus.ViewModels
 {
