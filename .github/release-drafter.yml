@@ -1,0 +1,54 @@
+name-template: v$RESOLVED_VERSION
+tag-template: v$RESOLVED_VERSION
+categories:
+  - title: '🚀 Features'
+    labels:
+      - 'feature'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'bug'
+change-template: '- $TITLE @$AUTHOR'
+template: |
+  **Prerequisite: This application requires the [.NET 9.0 Desktop Runtime to run.](https://dotnet.microsoft.com/ko-kr/download/dotnet/9.0) Please ensure it is installed on your system.**
+  **필수 요구 사항: 본 애플리케이션을 실행하려면 [.NET 9.0 데스크탑 런타임](https://dotnet.microsoft.com/ko-kr/download/dotnet/9.0)이 필요합니다. 실행 전 해당 런타임이 설치되어 있는지 확인해 주세요.**
+  **動作環境: 本アプリケーションの実行には [.NET 9.0 デスクトップランタイム](https://dotnet.microsoft.com/ko-kr/download/dotnet/9.0) が必要です。実行前にランタイムがインストールされていることを確認してください。**
+
+  ## Changes
+  $CHANGES
+
+  ---
+  # WARNING : Alpha Release
+  This is an alpha release.
+  Please be aware that this software is still in active development and may contain critical bugs, performance issues, or cause unexpected behavior.
+  **Use it at your own risk.**
+
+  We strongly recommend creating backups of your critical data before running this application:
+  `LR2Files/Config/config.xml`
+  `LR2HD/LR2files/Database/Score/<player>.db`
+
+  Your feedback is highly appreciated to help improve the stability and features of the project.
+
+  # 경고 : 알파 릴리즈
+
+  이 버전은 알파(Alpha) 테스트 버전입니다.
+  현재 활발히 개발 중인 단계이므로 치명적인 버그, 성능 문제 또는 예기치 않은 동작이 발생할 수 있습니다.
+  **사용으로 인해 발생하는 모든 결과에 대한 책임은 사용자 본인에게 있습니다.**
+
+  프로그램 실행 전, 아래의 중요 데이터를 반드시 백업해 두시기를 강력히 권장합니다:
+  `LR2Files/Config/config.xml`
+  `LR2HD/LR2files/Database/Score/<player>.db`
+
+  프로젝트의 안정성과 기능 향상을 위해 여러분의 소중한 피드백을 기다립니다.
+
+
+  # 警告：アルファ版リリース
+
+  本リリースはアルファ版です
+  現在開発中の段階であり、致命的なバグ、パフォーマンスの問題、または予期せぬ動作が発生する可能性があります
+  **使用によるいかなる損害についても、当方は責任を負いかねますので、自己責任でご利用ください。**
+
+  本アプリケーションを起動する前に、以下の重要なデータを必ずバックアップしておくことを強く推奨します：
+  `LR2Files/Config/config.xml`
+  `LR2HD/LR2files/Database/Score/<player>.db`
+
+  本プロジェクトの安定性と機能向上のため、皆様からのフィードバックをお待ちしております。
