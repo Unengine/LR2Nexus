@@ -56,7 +56,7 @@
 "Top10PlaycountFolder","TOP 10 Playcount Folder","플레이 카운트 TOP 10 폴더","プレイ回数TOP 10フォルダ"
 "InsaneBMSFolder","Insane(★) BMS Folder","발광(★) BMS 폴더","発狂(★)BMSフォルダ"
 "EnableFolderLamp","Enable Folder Lamp","폴더 램프 활성화","フォルダランプ有効化"
-"MaxDisplayedItemsCount","Max Displayed Items (Folder/Search)","최대 요소 표시 수 (폴더/검색)","最大表示件数 (フォルダ/検索)"
+"MaxDisplayedItemsCount","Max Displayed Items (Folder/Search, 0 : Unlimited)","최대 요소 표시 수 (폴더/검색, 0 : 무제한)","最大表示件数 (フォルダ/検索, 0 : 無制限)"
 "EnableSongPreview","Enable Song Preview","곡 프리뷰 활성화","楽曲プレビュー有効化"
 "SongReloadType","BMS Database Reload Type","BMS 데이터베이스 리로드 타입","BMSデータベースのリロードタイプ"
 "Manual","Manual","수동","手動"
