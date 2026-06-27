@@ -1,4 +1,6 @@
 ﻿using System.Reflection;
+using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -11,9 +13,19 @@ public static class XmlReflectionEngine
 		XDocument doc = File.Exists(filePath) ? XDocument.Load(filePath) : new XDocument(new XElement("Root"));
 		var root = doc.Root!;
 
+		Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+		doc.Declaration = new XDeclaration("1.0", "shift-jis", null);
+
 		UpdateElement(root, obj);
-		doc.Save(filePath);
+
+		using var writer = XmlWriter.Create(filePath, new XmlWriterSettings
+		{
+			Encoding = Encoding.GetEncoding("shift-jis"),
+			Indent = true
+		});
+		doc.Save(writer);
 	}
+
 	private static void UpdateElement(XElement element, object obj)
 	{
 		foreach (var prop in obj.GetType().GetProperties())
