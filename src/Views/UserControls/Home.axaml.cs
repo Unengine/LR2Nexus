@@ -4,6 +4,7 @@ using Avalonia.Platform.Storage;
 using Avalonia.Threading;
 using LR2Nexus.I18n;
 using LR2Nexus.Services;
+using LR2Nexus.src.Utils;
 using LR2Nexus.ViewModels;
 
 namespace LR2Nexus.Views;
@@ -114,41 +115,14 @@ public partial class Home : UserControl
 
 	private void OnResolutionXTextChanged(object? sender, TextChangedEventArgs e)
 	{
-		if (sender is TextBox textBox)
-		{
-			GameConfigService.Current.System.WindowSizeX = FilterResolutionText(textBox, default, 1920);
-		}
+		if (sender is not TextBox textBox) return;
+		GameConfigService.Current.System.WindowSizeX = TextBoxExtension.FilterIntegerText(textBox, default, 1920);
 	}
 
 	private void OnResolutionYTextChanged(object? sender, TextChangedEventArgs e)
 	{
-		if (sender is TextBox textBox)
-		{
-			GameConfigService.Current.System.WindowSizeY = FilterResolutionText(textBox, default, 1080);
-		}
-	}
-
-	private int FilterResolutionText(TextBox textBox, int minValue, int maxValue)
-	{
-		string filtered = textBox.Text == null ?
-			string.Empty :
-			new string([.. textBox.Text.Where(char.IsDigit)]);
-
-		if (filtered != string.Empty &&
-			int.TryParse(filtered, out var parsed))
-		{
-			parsed = int.Clamp(parsed, minValue, maxValue);
-			filtered = parsed.ToString();
-		}
-
-		if (textBox.Text != filtered)
-		{
-			int selectionStart = textBox.SelectionStart;
-			textBox.Text = filtered;
-			textBox.SelectionStart = Math.Min(selectionStart, filtered.Length);
-		}
-
-		return int.TryParse(textBox.Text, out var value) ? value : default;
+		if (sender is not TextBox textBox) return;
+		GameConfigService.Current.System.WindowSizeY = TextBoxExtension.FilterIntegerText(textBox, default, 1080);
 	}
 
 	private void OnScreenModeClick(object? sender, RoutedEventArgs e)

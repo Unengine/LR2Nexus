@@ -2,7 +2,7 @@
 
 namespace LR2Nexus.Utils
 {
-	public static class ObservableExtensions
+	public static class ObservableExtension
 	{
 		public static void Sync<T>(this ObservableCollection<T> collection, IEnumerable<T> newData)
 		{

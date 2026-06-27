@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace LR2Nexus.Services
 {
-	public static class ProcessService
+	public static class GameProcessService
 	{
 		public static string? LR2BodyPath { get; set; }
 

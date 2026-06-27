@@ -33,7 +33,7 @@ public partial class MainWindow : Window
 		DataContext = _viewModel;
 
 		SizeChanged += OnWindowSizeChanged;
-		ProcessService.LR2Exited += OnLR2Exited;
+		GameProcessService.LR2Exited += OnLR2Exited;
 
 		// Dispatcher.UIThread.Post ensures this runs after the UI is fully rendered
 		Dispatcher.UIThread.Post(InitializeState);
@@ -41,7 +41,7 @@ public partial class MainWindow : Window
 
 	private void InitializeState()
 	{
-		if (ProcessService.IsLR2Running)
+		if (GameProcessService.IsLR2Running)
 		{
 			LaunchGameButton.IsEnabled = false;
 		}
