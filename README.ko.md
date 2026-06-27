@@ -1,6 +1,6 @@
 # LR2Nexus
 
-OpenLR2를 위한 차세대 런처입니다.
+[OpenLR2](https://github.com/GOMazk/OpenLR2)를 위한 차세대 런처입니다.
 
 ## 소개
 LR2Nexus는 OpenLR2 생태계를 위해 설계된 현대적이고 가벼운 런처입니다. 설정을 관리하고 게임을 간편하게 실행할 수 있는 효율적인 인터페이스를 제공합니다.
