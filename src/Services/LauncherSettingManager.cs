@@ -58,12 +58,12 @@ namespace LR2Nexus.Services
 
 			ScanPlayersInDB();
 
-			ProcessService.LR2BodyPath = Current.Lr2Path;
+			GameProcessService.LR2BodyPath = Current.Lr2Path;
 		}
 
 		public static void SetLR2BodyPath(string path)
 		{
-			ProcessService.LR2BodyPath = path;
+			GameProcessService.LR2BodyPath = path;
 			Console.WriteLine($"Updated LR2Body path : {path}");
 
 			Current.Lr2Path = path;

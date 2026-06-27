@@ -7,7 +7,8 @@ namespace LR2Nexus.Models
 	{
 		[XmlElement("system")] public Lr2System System { get; set; } = new();
 		[XmlElement("jukebox")] public Lr2Jukebox Jukebox { get; set; } = new();
-
+		[XmlElement("play")] public Lr2Play Play { get; set; } = new();
+		[XmlElement("select")] public Lr2Select Select { get; set; } = new();
 
 		[XmlRoot("system")]
 		public class Lr2System
@@ -21,18 +22,35 @@ namespace LR2Nexus.Models
 			[XmlElement("directdraw")]
 			public int DirectDraw { get; set; } = 0;
 
-
 			[XmlElement("maindisplay")]
 			public int MainDisplay { get; set; } = 0;
 
 			[XmlElement("highcolor")]
 			public int HighColor { get; set; } = 0;
 
+			private int _autoReload = 1;
 			[XmlElement("autoreload")]
-			public int AutoReload { get; set; } = 0;
+			public int AutoReload
+			{
+				get => _autoReload;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 2);
+					_autoReload = clamped;
+				}
+			}
 
+			private int _customFolder = 0;
 			[XmlElement("customfolder")]
-			public int CustomFolder { get; set; } = 246;
+			public int CustomFolder
+			{
+				get => _customFolder;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 255);
+					_customFolder = clamped;
+				}
+			}
 
 			[XmlElement("mainsleep")]
 			public int MainSleep { get; set; } = 3;
@@ -113,5 +131,118 @@ namespace LR2Nexus.Models
 			[XmlElement("path")]
 			public List<string> Paths { get; set; } = [];
 		}
+
+		[XmlRoot("play")]
+		public class Lr2Play
+		{
+			private int _hsMax = 900;
+			[XmlElement("hsmax")]
+			public int HsMax
+			{
+				get => _hsMax;
+				set
+				{
+					var clamped = int.Clamp(value, 1, 10000);
+					_hsMax = clamped;
+				}
+			}
+
+			private int _hsMin = 10;
+			[XmlElement("hsmin")]
+			public int HsMin
+			{
+				get => _hsMin;
+				set
+				{
+					var clamped = int.Clamp(value, 1, 10000);
+					_hsMin = clamped;
+				}
+			}
+
+			private int _baseSpeed = 100;
+			[XmlElement("basespeed")]
+			public int BaseSpeed
+			{
+				get => _baseSpeed;
+				set
+				{
+					var clamped = int.Clamp(value, 1, 10000);
+					_baseSpeed = clamped;
+				}
+			}
+
+			private int _hsStep = 10;
+			[XmlElement("hsmargin")]
+			public int HsStep
+			{
+				get => _hsStep;
+				set
+				{
+					var clamped = int.Clamp(value, 1, 10000);
+					_hsStep = clamped;
+				}
+			}
+
+			private int _sudhidStep = 10;
+			[XmlElement("shuttermargin")]
+			public int SudHidStep
+			{
+				get => _sudhidStep;
+				set
+				{
+					var clamped = int.Clamp(value, 1, 100);
+					_sudhidStep = clamped;
+				}
+			}
+		}
+
+		[XmlRoot("select")]
+		public class Lr2Select
+		{
+			private int _folderLamp = 1;
+			[XmlElement("folderlamp")]
+			public int FolderLamp
+			{
+				get => _folderLamp;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 1);
+					_folderLamp = clamped;
+				}
+			}
+
+			private int _searchMax = 900;
+			[XmlElement("searchmax")]
+			public int SearchMax
+			{
+				get => _searchMax;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 10000);
+					_searchMax = clamped;
+				}
+			}
+
+			private int _preview = 1;
+			[XmlElement("preview")]
+			public int Preview
+			{
+				get => _preview;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 1);
+					_preview = clamped;
+				}
+			}
+		}
+
+		public const int BitRandomSelect = 1 << 0;
+		public const int BitFavoriteFolder = 1 << 1;
+		public const int BitTop10Playcount = 1 << 2;
+		public const int BitLevelFolder = 1 << 3;
+		public const int BitClearTypeFolder = 1 << 4;
+		public const int BitPlayrank = 1 << 5;
+		public const int BitIgnoredFolder = 1 << 6;
+		public const int BitInsaneBMSFolder = 1 << 7;
 	}
 }

@@ -1,6 +1,5 @@
 ﻿using Avalonia.Data;
 using Avalonia.Markup.Xaml;
-using LR2Nexus.Services;
 
 namespace LR2Nexus.I18n;
 

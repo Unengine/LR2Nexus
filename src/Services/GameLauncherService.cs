@@ -34,7 +34,7 @@ namespace LR2Nexus.Services
 				LauncherSettingManager.SaveAppSettings();
 			}
 
-			ProcessService.LaunchLR2Body(playerId);
+			GameProcessService.LaunchLR2Body(playerId);
 			return true;
 		}
 	}

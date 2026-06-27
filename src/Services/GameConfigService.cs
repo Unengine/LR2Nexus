@@ -1,10 +1,7 @@
 ﻿using Avalonia.Controls;
 using LR2Nexus.Models;
 using LR2Nexus.Utils;
-using System.Diagnostics;
-using System.Reflection;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 
 namespace LR2Nexus.Services
 {	

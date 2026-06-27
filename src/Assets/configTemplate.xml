@@ -6,7 +6,7 @@
 		<directdraw>0</directdraw>
 		<maindisplay>0</maindisplay>
 		<highcolor>0</highcolor>
-		<autoreload>2</autoreload>
+		<autoreload>1</autoreload>
 		<customfolder>0</customfolder>
 		<mainsleep>3</mainsleep>
 		<bmssleep>3</bmssleep>
