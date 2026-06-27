@@ -2,6 +2,7 @@
 using LR2Nexus.I18n;
 using LR2Nexus.Models;
 using LR2Nexus.Services;
+using System.ComponentModel.DataAnnotations;
 
 namespace LR2Nexus.ViewModels
 {
@@ -26,8 +27,19 @@ namespace LR2Nexus.ViewModels
 
 		#region Custom Folder Settings
 
-		[ObservableProperty]
 		private int _useFolderLamps;
+		public bool UseFolderLamps
+		{
+			get => (_useFolderLamps == 1);
+			set
+			{
+				if ((_useFolderLamps == 1) == value) return;
+				var enabled = value ? 1 : 0;
+				_useFolderLamps = enabled;
+				GameConfigService.Current.Select.FolderLamp = enabled;
+				OnPropertyChanged(nameof(UseFolderLamps));
+			}
+		}
 
 		[ObservableProperty]
 		[NotifyPropertyChangedFor(nameof(RandomSelectEnabled))]
@@ -95,8 +107,19 @@ namespace LR2Nexus.ViewModels
 
 		#region Miscellaneous Settings
 
-		[ObservableProperty]
 		private int _songPreviewEnabled;
+		public bool SongPreviewEnabled
+		{
+			get => (_songPreviewEnabled == 1);
+			set
+			{
+				if ((_songPreviewEnabled == 1) == value) return;
+				var enabled = value ? 1 : 0;
+				_songPreviewEnabled = enabled;
+				GameConfigService.Current.Select.Preview = enabled;
+				OnPropertyChanged(nameof(SongPreviewEnabled));
+			}
+		}
 
 		[ObservableProperty]
 		[NotifyPropertyChangedFor(nameof(ReloadTypeName))]
@@ -120,11 +143,11 @@ namespace LR2Nexus.ViewModels
 			HsStep = GameConfigService.Current.Play.HsStep.ToString();
 			SudHidStep = GameConfigService.Current.Play.SudHidStep.ToString();
 
-			UseFolderLamps = GameConfigService.Current.Select.FolderLamp;
+			UseFolderLamps = GameConfigService.Current.Select.FolderLamp == 1;
 			CustomFolderValue = GameConfigService.Current.System.CustomFolder;
 			MaxDisplayedItemCount = GameConfigService.Current.Select.SearchMax.ToString();
 
-			SongPreviewEnabled = GameConfigService.Current.Select.Preview;
+			SongPreviewEnabled = GameConfigService.Current.Select.Preview == 1;
 			ReloadType = GameConfigService.Current.System.AutoReload;
 		}
 
