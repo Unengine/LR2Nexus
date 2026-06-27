@@ -1,5 +1,7 @@
 # LR2Nexus
 
+**Prerequisite: This application requires the [.NET 9.0 Desktop Runtime to run.](https://dotnet.microsoft.com/ko-kr/download/dotnet/9.0) Please ensure it is installed on your system.**
+
 [English](README.md) | [한국어](README.ko.md) | [日本語](README.ja.md)
 
 A new generation launcher for [OpenLR2](https://github.com/GOMazk/OpenLR2)
@@ -18,6 +20,8 @@ We strongly recommend creating backups of your critical data before running this
 **Note:** When you first use LR2Nexus to configure your profile, your existing LR2 profile password may be reset or re-encrypted. Please ensure you have a backup of your profile information.
 
 ## How to Use
+Prerequisite: This application requires the [.NET 9.0 Desktop Runtime to run.](https://dotnet.microsoft.com/ko-kr/download/dotnet/9.0) Please ensure it is installed on your system.
+
 1. Download the latest release from the [Releases page](https://github.com/Unengine/LR2Nexus/releases).
 2. Extract the ZIP file to any folder of your choice. (It does not need to be placed in the same directory as your LR2 installation.)
 3. Run `LR2Nexus.exe`.
