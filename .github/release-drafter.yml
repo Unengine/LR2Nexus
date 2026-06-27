@@ -2,11 +2,13 @@ name-template: v$RESOLVED_VERSION
 tag-template: v$RESOLVED_VERSION
 categories:
   - title: '🚀 Features'
-    labels:
-      - 'feature'
+    when:
+      labels:
+        - 'feature'
   - title: '🐛 Bug Fixes'
-    labels:
-      - 'bug'
+    when:
+      labels:
+        - 'bug'
 change-template: '- $TITLE @$AUTHOR'
 template: |
   # [Download](Binary Link Here)
