@@ -4,8 +4,6 @@ using LR2Nexus.Models;
 using LR2Nexus.Utils;
 using LR2Nexus.Views;
 using Microsoft.Data.Sqlite;
-using System.Numerics;
-using Tmds.DBus.Protocol;
 
 namespace LR2Nexus.Services
 {
