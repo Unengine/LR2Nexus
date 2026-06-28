@@ -1,12 +1,9 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using LR2Nexus.I18n;
 using LR2Nexus.Utils;
 using LR2Nexus.ViewModels;
-using System.Diagnostics;
-using Tmds.DBus.Protocol;
 
 namespace LR2Nexus.Views;
 
