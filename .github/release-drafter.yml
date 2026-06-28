@@ -1,6 +1,7 @@
-name-template: v$RESOLVED_VERSION
-tag-template: v$RESOLVED_VERSION
+latest-release: true
 ignore-prerelease: false
+name-template: v$RESOLVED_VERSION
+tag-template: ''
 categories:
   - title: '🚀 Features'
     when:
