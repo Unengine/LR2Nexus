@@ -34,12 +34,12 @@
                          Name="TextBoxMisslayerDuration"
                          TextChanged="OnMisslayerDurationChanged"
                          Width="80" />
-<!--            seems like <maindisplay> is not working in config.xml for now.
-                <TextBlock Text="{i18n:Translate DisplayMonitor}" />
+<!--            seems like <maindisplay> is not working in config.xml for now.-->
+<!--                <TextBlock Text="{i18n:Translate DisplayMonitor}" />
                 <ComboBox ItemsSource="{Binding AvailableMonitors}"
                           SelectedItem="{Binding SelectedMonitor}"
                           SelectionChanged="OnDisplayMonitorChanged"
-                          Width="250"/>-->
+                          Width="180"/>-->
             </StackPanel>
             <Border BorderBrush="LightGray" BorderThickness="0,0,0,1"/>
         </StackPanel>
