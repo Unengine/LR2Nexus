@@ -53,15 +53,27 @@ namespace LR2Nexus.Services
 				isHashLegit = hash != null && hash == MD5Util.CalculateMD5(password).Body;
 			}
 
+			var cts = new CancellationTokenSource();
+			var task = new Task(() => EnsurePlayerAuth(id, password, cts.Token), cts.Token);
+
 			if (!isHashLegit)
 			{
-				var cts = new CancellationTokenSource();
-				var task = Task.Run(() => EnsurePlayerAuth(id, password, cts.Token), cts.Token);
+				task.Start();
 				await LoadingWindow.PromptWithTaskAsync(owner, task, cts, false,
 					I18nManager.Instance["SettingPassword"],
 					I18nManager.Instance["SettingPasswordContent1"]);
 			}
-			
+
+			if (task.IsFaulted)
+			{
+				Console.WriteLine(task.Exception);
+				return false;
+			}
+			if (task.IsCanceled)
+			{
+				return false;
+			}
+
 			GameProcessService.LaunchLR2Body(id);
 			return true;
 		}
@@ -69,6 +81,15 @@ namespace LR2Nexus.Services
 		public static void EnsurePlayerAuth(string id, string targetPassword, CancellationToken token)
 		{
 			var dbPath = LauncherSettingManager.GetPlayerDBPath(id);
+
+			try
+			{
+				BackupDatabase(dbPath);
+			}
+			catch
+			{
+				throw;
+			}
 
 			using var connection = new SqliteConnection($"Data Source={dbPath};Mode=ReadWrite;");
 			connection.Open();
@@ -137,5 +158,27 @@ namespace LR2Nexus.Services
 				throw;
 			}
 		}
+
+		private static void BackupDatabase(string dbPath)
+		{
+			try
+			{
+				string backupPath = $"{dbPath}.{DateTime.Now:yyyyMMddHHmmss}.bak";
+				File.Copy(dbPath, backupPath, overwrite: true);
+			}
+			catch (IOException ex)
+			{
+				throw new Exception("Database file is currently in use. Please close LR2 before updating.", ex);
+			}
+			catch (UnauthorizedAccessException ex)
+			{
+				throw new Exception("Access denied: Cannot create backup. Please check your folder permissions.", ex);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Failed to backup database: {ex.Message}", ex);
+			}
+		}
+
 	}
 }

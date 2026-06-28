@@ -64,3 +64,4 @@
 "AutoType2","Auto Type 2","자동 (타입 2)","自動 (タイプ2)"
 "SettingPassword","Setting Password","비밀번호 설정 중","パスワード設定中"
 "SettingPasswordContent1","Reconfiguring security credentials. This may take a few seconds.","비밀번호 변경에 따른 데이터를 재설정하고 있습니다. 잠시 기다려 주세요.","パスワード変更に伴い、データを再設定しています。少々お待ちください。"
+"PasswordResetFailedContent","Failed to change the password. If LR2 is running, please close it and try again.","비밀번호 변경에 실패했습니다. LR2가 실행 중이라면 종료 후 다시 시도해 주세요.",

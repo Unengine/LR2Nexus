@@ -2,8 +2,11 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
+using LR2Nexus.I18n;
 using LR2Nexus.Utils;
 using LR2Nexus.ViewModels;
+using System.Diagnostics;
+using Tmds.DBus.Protocol;
 
 namespace LR2Nexus.Views;
 
@@ -44,8 +47,11 @@ public partial class LoadingWindow : Window
 
 		_ = task.ContinueWith(async t =>
 		{
-			await Dispatcher.UIThread.InvokeAsync(() =>
+			await Dispatcher.UIThread.InvokeAsync(async () =>
 			{
+				await AlertWindow.PromptAsync(owner,
+					I18nManager.Instance["Error"],
+					I18nManager.Instance["PasswordResetFailedContent"]);
 				if (window.IsVisible) window.Close();
 			});
 		}, TaskScheduler.Default);
