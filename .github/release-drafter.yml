@@ -1,5 +1,5 @@
 latest-release: true
-ignore-prerelease: false
+prerelease: true
 name-template: v$RESOLVED_VERSION
 tag-template: ''
 categories:
