@@ -60,7 +60,7 @@ public class DBScoreRow(SqliteDataReader reader)
         ];
 	}
 
-	public static bool IsSameScoreHash(DBScoreRow score, MD5Hash passwordHash, MD5Hash targetHash)
+	public static bool IsScorehashValid(DBScoreRow score, MD5Hash passwordHash, MD5Hash targetHash)
 	{
 		MD5Hash newHash = score.CalculateScorehash(passwordHash);
 		if (newHash == targetHash) return true;

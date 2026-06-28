@@ -112,7 +112,7 @@ namespace LR2Nexus.Services
 						token.ThrowIfCancellationRequested();
 						var score = new DBScoreRow(scoreReader);
 						var targetScorehashMD5 = score.CalculateScorehash(targetPlayerPasswordHashMD5);
-						if (!DBScoreRow.IsSameScoreHash(score, targetPlayerPasswordHashMD5, targetScorehashMD5))
+						if (!DBScoreRow.IsScorehashValid(score, targetPlayerPasswordHashMD5, targetScorehashMD5))
 						{
 							updateScoreCmd.Parameters["@scorehash"].Value = targetScorehashMD5.Body;
 							updateScoreCmd.Parameters["@hash"].Value = score.Hash;
