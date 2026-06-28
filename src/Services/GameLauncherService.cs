@@ -134,12 +134,12 @@ namespace LR2Nexus.Services
 						var score = new DBScoreRow(scoreReader);
 						var targetScorehashMD5 = score.CalculateScorehash(targetPlayerPasswordHashMD5);
 						if (!DBScoreRow.IsScorehashValid(score, targetPlayerPasswordHashMD5, targetScorehashMD5))
-						{
-							updateScoreCmd.Parameters["@scorehash"].Value = targetScorehashMD5.Body;
-							updateScoreCmd.Parameters["@hash"].Value = score.Hash;
-							updateScoreCmd.ExecuteNonQuery();
-							Console.WriteLine($"Updating scorehash of a score.\n[Update] Hash : {score.Hash} / Scorehash : {targetScorehashMD5}");
-						}
+							throw new Exception("Invalid score found in the database.");
+
+						updateScoreCmd.Parameters["@scorehash"].Value = targetScorehashMD5.Body;
+						updateScoreCmd.Parameters["@hash"].Value = score.Hash;
+						updateScoreCmd.ExecuteNonQuery();
+						Console.WriteLine($"Updating scorehash of a score.\n[Update] Hash : {score.Hash} / Scorehash : {targetScorehashMD5}");
 					}
 				}
 
