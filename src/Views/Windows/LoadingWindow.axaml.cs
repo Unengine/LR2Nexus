@@ -46,9 +46,12 @@ public partial class LoadingWindow : Window
 		{
 			await Dispatcher.UIThread.InvokeAsync(async () =>
 			{
-				await AlertWindow.PromptAsync(owner,
-					I18nManager.Instance["Error"],
-					I18nManager.Instance["PasswordResetFailedContent"]);
+				if (t.IsFaulted)
+				{
+					await AlertWindow.PromptAsync(owner,
+						I18nManager.Instance["Error"],
+						I18nManager.Instance["PasswordResetFailedContent"]);
+				}
 				if (window.IsVisible) window.Close();
 			});
 		}, TaskScheduler.Default);
