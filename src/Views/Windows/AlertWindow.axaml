@@ -10,18 +10,14 @@
         x:DataType="vm:AlertWindowViewModel"
         d:DesignWidth="384"
         d:DesignHeight="216">
-        <Grid Name="RootGrid" Margin="20" RowDefinitions="Auto, Auto, *" HorizontalAlignment="Center">
-            <ContentControl Grid.Row="0"
-                            Name="MessageContainer"
-                            MaxHeight="140"/>
-            
-            <Button Grid.Row="2"
+        <DockPanel Margin="20" LastChildFill="True">
+            <Button DockPanel.Dock="Bottom"
                     Name="ConfirmButton"
                     Classes="ActionButton"
-                    Width="100"
-                    Content="OK"
+                    Content="Confirm"
                     Click="OnConfirmClick"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"/>
-        </Grid>
+                    Margin="0,20,0,0" />
+            <ContentControl Name="MessageContainer" VerticalAlignment="Top" />
+        </DockPanel>
 </Window>

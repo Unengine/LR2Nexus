@@ -79,7 +79,7 @@ public partial class MainWindow : Window
 
 		try
 		{
-			var currentId = LauncherSettingManager.Current.RecentPlayerName;
+			string currentId = LauncherSettingManager.Current.RecentPlayerName ?? string.Empty;
 
 			if (!LauncherSettingManager.HasPlayerDB(currentId))
 			{
@@ -110,7 +110,7 @@ public partial class MainWindow : Window
 					$"<b>{I18nManager.Instance["PasswordConditionContent2"]}</b>");
 				if (string.IsNullOrEmpty(password)) return;
 
-				if (!LauncherSettingManager.TryCreateNewPlayer(id!, password!))
+				if (!LauncherSettingManager.TryCreateNewPlayer(id, password))
 				{
 					var message = string.Format(I18nManager.Instance["CreateNewProfileErrorFormat"], id);
 
@@ -134,7 +134,7 @@ public partial class MainWindow : Window
 			}
 
 			LaunchGameButton.IsEnabled = false;
-			var success = await GameLauncherService.PrepareAndLaunchGameAsync(this, currentId!, InputWindow.PromptWithRegexAsync);
+			var success = await GameLauncherService.PrepareAndLaunchGameAsync(this, currentId, InputWindow.PromptWithRegexAsync);
 			if (!success) LaunchGameButton.IsEnabled = true;
 		}
 		catch (Exception ex)
