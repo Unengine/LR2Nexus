@@ -127,6 +127,7 @@ namespace LR2Nexus.Services
 			}
 			catch (OperationCanceledException)
 			{
+				transaction.Rollback();
 				Console.WriteLine("Password update cancelled.");
 			}
 			catch (Exception ex)
