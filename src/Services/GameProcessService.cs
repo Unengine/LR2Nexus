@@ -1,8 +1,6 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using LR2Nexus.Utils;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Security.Cryptography;
-using System.Text;
 using System.Xml.Linq;
 
 namespace LR2Nexus.Services
@@ -44,19 +42,17 @@ namespace LR2Nexus.Services
 
 		public static event EventHandler? LR2Exited;
 
-		public static void LaunchLR2Body(string? id)
+		public static void LaunchLR2Body(string id)
 		{
 			try
 			{
-				if (string.IsNullOrEmpty(id) ||
-					!LauncherSettingManager.Current.Players.TryGetValue(id, out var password) ||
-					string.IsNullOrEmpty(password))
+				if (!LauncherSettingManager.Current.Players.TryGetValue(id, out var password) ||
+					password == null)
 				{
-					throw new Exception("ID/Password not set.");
+					throw new Exception("Password not set.");
 				}
 
 				UpdateLR2Config(id, password);
-				EnsurePlayerAuth(id, password);
 
 				var startInfo = new ProcessStartInfo
 				{
@@ -86,38 +82,6 @@ namespace LR2Nexus.Services
 			catch
 			{
 				throw;
-			}
-		}
-
-		public static void EnsurePlayerAuth(string id, string targetPassword)
-		{
-			var dbPath = LauncherSettingManager.GetPlayerDBPath(id);
-			var targetHash = CalculateMD5(targetPassword);
-
-			using var connection = new SqliteConnection($"Data Source={dbPath};Mode=ReadWrite;");
-			connection.Open();
-
-			using var selectCmd = new SqliteCommand("SELECT hash FROM player LIMIT 1", connection);
-			var currentHash = selectCmd.ExecuteScalar()?.ToString();
-
-			if (currentHash != targetHash)
-			{
-				using var transaction = connection.BeginTransaction();
-				try
-				{
-					using var updateCmd = new SqliteCommand("UPDATE player SET hash = @hash", connection, transaction);
-					updateCmd.Parameters.AddWithValue("@hash", targetHash);
-					updateCmd.ExecuteNonQuery();
-
-					transaction.Commit();
-					Console.WriteLine($"Password updated successfully. MD5 Hash : {targetHash}");
-				}
-				catch (Exception ex)
-				{
-					transaction.Rollback();
-					Console.WriteLine($"Critical Error: Failed to update password for {id}: {ex.Message}");
-					throw;
-				}
 			}
 		}
 
@@ -160,19 +124,6 @@ namespace LR2Nexus.Services
 			{
 				throw;
 			}
-		}
-
-		private static string CalculateMD5(string input)
-		{
-			byte[] inputBytes = Encoding.UTF8.GetBytes(input);
-			byte[] hashBytes = MD5.HashData(inputBytes);
-
-			StringBuilder sb = new();
-			for (int i = 0; i < hashBytes.Length; i++)
-			{
-				sb.Append(hashBytes[i].ToString("x2"));
-			}
-			return sb.ToString();
 		}
 	}
 }

@@ -1,0 +1,15 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        x:Class="LR2Nexus.Views.LoadingWindow"
+        xmlns:vm="clr-namespace:LR2Nexus.ViewModels"
+        Title="InputWindow"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False"
+        SizeToContent="Height"
+        x:DataType="vm:LoadingWindowViewModel"
+        Background="#11000000"
+        d:DesignWidth="1280"
+        d:DesignHeight="720">
+        <ContentControl Name="MessageContainer" HorizontalAlignment="Center" VerticalAlignment="Center" />
+</Window>

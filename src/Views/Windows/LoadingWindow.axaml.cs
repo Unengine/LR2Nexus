@@ -1,3 +1,4 @@
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
@@ -6,11 +7,11 @@ using LR2Nexus.ViewModels;
 
 namespace LR2Nexus.Views;
 
-public partial class AlertWindow : Window
+public partial class LoadingWindow : Window
 {
-	private readonly AlertWindowViewModel _viewModel = new();
+	private readonly LoadingWindowViewModel _viewModel = new();
 
-	public AlertWindow()
+	public LoadingWindow()
 	{
 		InitializeComponent();
 		DataContext = _viewModel;
@@ -22,11 +23,24 @@ public partial class AlertWindow : Window
 	}
 
 	public static async Task<bool?> PromptWithTaskAsync(Window owner,
-		Task task, CancellationTokenSource cts,
+		Task task, CancellationTokenSource cts, bool cancellable,
 		string title, params string[] messages)
 	{
-		var window = SetupWindow(owner, title, messages);	
+		var window = SetupWindow(owner, title, messages);
 		window.Closed += (_, _) => cts.Cancel();
+		if (!cancellable)
+		{
+			window.Closing += (_, e) =>
+			{
+				if (!task.IsCompleted)
+				{
+					e.Cancel = true;
+				}
+			};
+
+			window.WindowDecorations = WindowDecorations.None;
+			window.ShowInTaskbar = false;
+		}
 
 		_ = task.ContinueWith(async t =>
 		{
@@ -45,15 +59,16 @@ public partial class AlertWindow : Window
 		return await window.ShowDialog<bool>(owner);
 	}
 
-	private static AlertWindow SetupWindow(Window owner, string title, params string[] messages)
+	private static LoadingWindow SetupWindow(Window owner, string title, params string[] messages)
 	{
-		var width = owner.Width * 0.3;
-		var height = owner.Height * 0.3;
-		var win = new AlertWindow()
+		var width = owner.Width;
+		var height = owner.Height;
+		var win = new LoadingWindow
 		{
 			Title = title,
 			Width = width,
-			MinHeight = height
+			MinHeight = height,
+			Position = owner.Position
 		};
 
 		var textBlock = new TextBlock()
