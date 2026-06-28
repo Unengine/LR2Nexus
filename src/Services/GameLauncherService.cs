@@ -50,7 +50,7 @@ namespace LR2Nexus.Services
 				connection.Open();
 				using var selectPlayerCmd = new SqliteCommand("SELECT hash FROM player LIMIT 1", connection);
 				string? hash = selectPlayerCmd.ExecuteScalar()?.ToString();
-				isHashLegit = hash != null && hash == MD5Util.CalculateMD5(password);
+				isHashLegit = hash != null && hash == MD5Util.CalculateMD5(password).Body;
 			}
 
 			if (!isHashLegit)
@@ -74,28 +74,28 @@ namespace LR2Nexus.Services
 			connection.Open();
 
 			DBPlayerRow player;
-			string? idHash, playerScorehash;
+			string? passwordHash, playerScorehash;
 			using var selectPlayerCmd = new SqliteCommand(SelectPlayerQuery, connection);
 			using (var reader = selectPlayerCmd.ExecuteReader())
 			{
 				if (!reader.Read()) throw new Exception("Player data not found.");
 
 				player = new DBPlayerRow(reader);
-				idHash = player.Hash;
+				passwordHash = player.Hash;
 				playerScorehash = player.Scorehash;
 			}
 
-			var targetPlayerIdHash = MD5Util.CalculateMD5(targetPassword);
-			var targetPlayerScorehash = player.CalculateScorehash();
+			MD5Hash targetPlayerPasswordHashMD5 = MD5Util.CalculateMD5(targetPassword);
+			MD5Hash targetPlayerScorehashMD5 = player.CalculateScorehash();
 
-			if (idHash == targetPlayerIdHash && playerScorehash == targetPlayerScorehash) return;
+			if (passwordHash == targetPlayerPasswordHashMD5.Body && playerScorehash == targetPlayerScorehashMD5.Body) return;
 			using var transaction = connection.BeginTransaction();
 			try
 			{
 				using (var updatePlayerCmd = new SqliteCommand(UpdatePlayerHashQuery, connection, transaction))
 				{
-					updatePlayerCmd.Parameters.AddWithValue("@hash", targetPlayerIdHash);
-					updatePlayerCmd.Parameters.AddWithValue("@scorehash", targetPlayerScorehash);
+					updatePlayerCmd.Parameters.AddWithValue("@hash", targetPlayerPasswordHashMD5.Body);
+					updatePlayerCmd.Parameters.AddWithValue("@scorehash", targetPlayerScorehashMD5.Body);
 					updatePlayerCmd.ExecuteNonQuery();
 				}
 
@@ -111,17 +111,19 @@ namespace LR2Nexus.Services
 					{
 						token.ThrowIfCancellationRequested();
 						var score = new DBScoreRow(scoreReader);
-						var scorehash = score.CalculateScorehash(targetPassword);
-
-						updateScoreCmd.Parameters["@scorehash"].Value = scorehash;
-						updateScoreCmd.Parameters["@hash"].Value = score.Hash;
-						updateScoreCmd.ExecuteNonQuery();
-						Console.WriteLine($"Updating scorehash of a score. Hash : {score.Hash} / Scorehash : {scorehash}");
+						var targetScorehashMD5 = score.CalculateScorehash(targetPlayerPasswordHashMD5);
+						if (!DBScoreRow.IsSameScoreHash(score, targetPlayerPasswordHashMD5, targetScorehashMD5))
+						{
+							updateScoreCmd.Parameters["@scorehash"].Value = targetScorehashMD5.Body;
+							updateScoreCmd.Parameters["@hash"].Value = score.Hash;
+							updateScoreCmd.ExecuteNonQuery();
+							Console.WriteLine($"Updating scorehash of a score.\n[Update] Hash : {score.Hash} / Scorehash : {targetScorehashMD5}");
+						}
 					}
 				}
 
 				transaction.Commit();
-				Console.WriteLine($"Password updated successfully. Hash : {targetPlayerIdHash} / Scorehash : {targetPlayerScorehash}");
+				Console.WriteLine($"Password updated successfully. Hash : {targetPlayerPasswordHashMD5} / Scorehash : {targetPlayerScorehashMD5}");
 			}
 			catch (OperationCanceledException)
 			{

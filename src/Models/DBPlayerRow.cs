@@ -40,16 +40,16 @@ public class DBPlayerRow(SqliteDataReader reader)
 
 	public void SetPassword(string password)
 	{
-		Hash = MD5Util.CalculateMD5(password);
+		Hash = MD5Util.CalculateMD5(password).Body;
 		UpdateScoreHash();
 	}
 
 	public void UpdateScoreHash()
 	{
-		Scorehash = CalculateScorehash();
+		Scorehash = CalculateScorehash().Body;
 	}
 
-	public string CalculateScorehash()
+	public MD5Hash CalculateScorehash()
 	{
 		return MD5Util.CalculateMD5(ToRawArray());
 	}

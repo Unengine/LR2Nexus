@@ -24,17 +24,17 @@ public class DBScoreRow(SqliteDataReader reader)
 	public int OpHistory { get; set; } = DatabaseUtils.GetValue<int>(reader, "op_history");
 	public string? Scorehash { get; set; } = DatabaseUtils.GetValue<string>(reader, "scorehash");
 
-	public string CalculateScorehash(string password)
+	public MD5Hash CalculateScorehash(MD5Hash passwordMD5)
 	{
-		return MD5Util.CalculateMD5(ToRawArray(password));
+		return MD5Util.CalculateMD5(ToRawArray(passwordMD5));
 	}
 
-	public void UpdateScorehash(string password)
+	public void UpdateScorehash(MD5Hash passwordMD5)
 	{
-		Scorehash = CalculateScorehash(password);
+		Scorehash = CalculateScorehash(passwordMD5).Body;
 	}
 
-	public object[] ToRawArray(string password)
+	public object[] ToRawArray(MD5Hash passwordMD5)
 	{
 		return
 		[
@@ -54,9 +54,57 @@ public class DBScoreRow(SqliteDataReader reader)
             Rate,
             ClearDb,
             OpHistory,
-            password,
+			passwordMD5.Body,
             Hash ?? string.Empty,
             "1"
         ];
+	}
+
+	public static bool IsSameScoreHash(DBScoreRow score, MD5Hash passwordHash, MD5Hash targetHash)
+	{
+		MD5Hash newHash = score.CalculateScorehash(passwordHash);
+		if (newHash == targetHash) return true;
+
+		if (score.Perfect == score.Totalnotes && score.Rank == 8)
+		{
+			score.Rank = 9;
+			newHash = score.CalculateScorehash(passwordHash);
+			if (newHash == targetHash)
+			{
+				score.Rank = 8;
+				return true;
+			}
+		}
+		if (score.Perfect == score.Totalnotes && score.Rank == 9)
+		{
+			score.Rank = 8;
+			newHash = score.CalculateScorehash(passwordHash);
+			if (newHash == targetHash)
+			{
+				return true;
+			}
+		}
+
+		if (score.Rank == 1)
+		{
+			score.Rank = 0;
+			newHash = score.CalculateScorehash(passwordHash);
+			if (newHash == targetHash)
+			{
+				score.Rank = 1;
+				return true;
+			}
+		}
+		if (score.Rank == 0)
+		{
+			score.Rank = 1;
+			newHash = score.CalculateScorehash(passwordHash);
+			if (newHash == targetHash)
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 }
