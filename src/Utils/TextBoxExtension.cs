@@ -1,11 +1,40 @@
 ﻿
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 
 namespace LR2Nexus.src.Utils
 {
 	public static class TextBoxExtension
 	{
-		public static int FilterIntegerText(TextBox textBox, int minValue, int maxValue)
+		public static int FilterIntegerText(TextBox textBox, int maxValue)
+		{
+			var (value, text) = FilterIntegerStringFromTextBox(textBox);
+			value = value > maxValue ? maxValue : value;
+
+			if (textBox.Text != text)
+			{
+				int selectionStart = textBox.SelectionStart;
+				textBox.Text = text;
+				textBox.SelectionStart = Math.Min(selectionStart, text.Length);
+			}
+
+			return value;
+		}
+
+		public static void UpdateIntegerTextOnEvent(int value, object? sender, RoutedEventArgs e)
+		{
+			if (sender is not TextBox textBox) return;
+
+			var text = value.ToString();
+			if (textBox.Text != text)
+			{
+				int selectionStart = textBox.SelectionStart;
+				textBox.Text = text;
+				textBox.SelectionStart = Math.Min(selectionStart, text.Length);
+			}
+		}
+
+		private static (int value, string result) FilterIntegerStringFromTextBox(TextBox textBox)
 		{
 			string filtered = textBox.Text == null ?
 				string.Empty :
@@ -14,18 +43,10 @@ namespace LR2Nexus.src.Utils
 			if (filtered != string.Empty &&
 				int.TryParse(filtered, out var parsed))
 			{
-				parsed = int.Clamp(parsed, minValue, maxValue);
-				filtered = parsed.ToString();
+				return (parsed, parsed.ToString());
 			}
 
-			if (textBox.Text != filtered)
-			{
-				int selectionStart = textBox.SelectionStart;
-				textBox.Text = filtered;
-				textBox.SelectionStart = Math.Min(selectionStart, filtered.Length);
-			}
-
-			return int.TryParse(textBox.Text, out var value) ? value : default;
+			return (default, string.Empty);
 		}
 	}
 }

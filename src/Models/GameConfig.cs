@@ -16,8 +16,17 @@ namespace LR2Nexus.Models
 			[XmlElement("screenmode")]
 			public int Screenmode { get; set; } = 1;
 
+			private int _vsync = 0;
 			[XmlElement("vsync")]
-			public int VSync { get; set; } = 0;
+			public int VSync
+			{
+				get => _vsync;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 1);
+					_vsync = clamped;
+				}
+			}
 
 			[XmlElement("directdraw")]
 			public int DirectDraw { get; set; } = 0;
@@ -61,14 +70,32 @@ namespace LR2Nexus.Models
 			[XmlElement("screenexrate")]
 			public int ScreenExrate { get; set; } = 100;
 
+			private int _inputInterval = 16;
 			[XmlElement("inputinterval")]
-			public int InputInterval { get; set; } = 16;
+			public int InputInterval
+			{
+				get => _inputInterval;
+				set
+				{
+					var clamped = int.Clamp(value, 8, 16);
+					_inputInterval = clamped;
+				}
+			}
 
 			[XmlElement("disablesystemkey")]
 			public int DisableSystemKey { get; set; } = 0;
 
+			private int _outputLog = 0;
 			[XmlElement("outputlog")]
-			public int OutputLog { get; set; } = 0;
+			public int OutputLog
+			{
+				get => _outputLog;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 1);
+					_outputLog = clamped;
+				}
+			}
 
 			[XmlElement("thread")]
 			public int Thread { get; set; } = 0;
@@ -76,8 +103,17 @@ namespace LR2Nexus.Models
 			[XmlElement("eventmode")]
 			public int Eventmode { get; set; } = 0;
 
+			private int _disableSkinPreview = 0;
 			[XmlElement("disableskinpreview")]
-			public int DisableSkinPreview { get; set; } = 0;
+			public int DisableSkinPreview
+			{
+				get => _disableSkinPreview;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 1);
+					_disableSkinPreview = clamped;
+				}
+			}
 
 			[XmlElement("newsongfolder")]
 			public string NewSongFolder { get; set; } = @"NEW SONG\";
@@ -192,6 +228,18 @@ namespace LR2Nexus.Models
 				{
 					var clamped = int.Clamp(value, 1, 100);
 					_sudhidStep = clamped;
+				}
+			}
+
+			private int _misslayerDuration = 500;
+			[XmlElement("poorbga")]
+			public int MisslayerDuration
+			{
+				get => _misslayerDuration;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 5000);
+					_misslayerDuration = clamped;
 				}
 			}
 		}

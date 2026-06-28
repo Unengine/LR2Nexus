@@ -1,8 +1,5 @@
 ﻿using Avalonia;
-using LR2Nexus.I18n;
-using LR2Nexus.Services;
 using LR2Nexus.Views;
-using System.Text;
 
 namespace LR2Nexus;
 

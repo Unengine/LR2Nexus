@@ -44,7 +44,7 @@
 "MiscellaneousSettings","Miscellaneous","기타 설정","その他の設定"
 "Max","Max","최대","最大"
 "Min","Min","최소","最小"
-"BaseSpeed","Base Speed","기준 배속","基準倍率"
+"BaseSpeed","Base Speed (%)","기준 배속 (%)","基準倍率 (%)"
 "StepSize","Step","조절 간격","調整間隔"
 "SettingsWillBeSavedOnLaunchingLR2","Settings will be saved on launching LR2.","설정은 LR2 실행 시 적용됩니다.","設定はLR2起動時に適用されます。"
 "RandomSelect","Random Select","랜덤 선택","ランダム選択"
@@ -65,3 +65,8 @@
 "SettingPassword","Setting Password","비밀번호 설정 중","パスワード設定中"
 "SettingPasswordContent1","Reconfiguring security credentials. This may take a few seconds.","비밀번호 변경에 따른 데이터를 재설정하고 있습니다. 잠시 기다려 주세요.","パスワード変更に伴い、データを再設定しています。少々お待ちください。"
 "PasswordResetFailedContent","Failed to change the password. If LR2 is running, please close it and try again.","비밀번호 변경에 실패했습니다. LR2가 실행 중이라면 종료 후 다시 시도해 주세요.",
+"MinInputInterval","Minimum Input Interval (8-16ms)","최소 입력 간격 (8-16ms)",
+"DisplaySettings","Display Settings","디스플레이 설정",
+"MissLayerDuration","Miss Layer Duration (ms)","미스레이어 지속 시간 (ms)",
+"DisplayMonitor","Display on :","표시 모니터",
+"PrimaryDevice","Primary Device","주 장치",

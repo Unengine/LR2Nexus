@@ -3,6 +3,7 @@ using Avalonia.Markup.Xaml;
 using LR2Nexus.I18n;
 using LR2Nexus.Services;
 using System.Text;
+
 namespace LR2Nexus.Views;
 
 internal partial class App : Application

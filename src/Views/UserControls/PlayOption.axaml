@@ -33,26 +33,26 @@
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="HISPEED" />
                 <TextBlock Grid.Row="0" Grid.Column="1" Text="{i18n:Translate Max}" />
                 <TextBox Grid.Row="0" Grid.Column="2"
-                         Text="{Binding HsMax}" TextChanged="OnHSMaxChanged" />
+                         Name="TextBoxHsMax" Text="{Binding HsMax}" TextChanged="OnHSMaxChanged" />
                 
                 <TextBlock Grid.Row="0" Grid.Column="3" Text="HISPEED" />
                 <TextBlock Grid.Row="0" Grid.Column="4" Text="{i18n:Translate Min}" />
                 <TextBox Grid.Row="0" Grid.Column="5"
-                         Text="{Binding HsMin}" TextChanged="OnHSMinChanged" />
+                         Name="TextBoxHsMin" Text="{Binding HsMin}" TextChanged="OnHSMinChanged" />
                 
                 <TextBlock Grid.Row="0" Grid.Column="6" Text="{i18n:Translate BaseSpeed}" />
                 <TextBox Grid.Row="0" Grid.Column="7"
-                         Text="{Binding BaseSpeed}" TextChanged="OnBaseSpeedChanged" />
+                         Name="TextBoxBaseSpeed" Text="{Binding BaseSpeed}" TextChanged="OnBaseSpeedChanged" />
 
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="HISPEED" />
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="{i18n:Translate StepSize}" />
                 <TextBox Grid.Row="1" Grid.Column="2"
-                         Text="{Binding HsStep}" TextChanged="OnHSStepChanged" />
+                         Name="TextBoxHsStep" Text="{Binding HsStep}" TextChanged="OnHSStepChanged" />
                 
                 <TextBlock Grid.Row="1" Grid.Column="3" Text="SUD/HID" />
                 <TextBlock Grid.Row="1" Grid.Column="4" Text="{i18n:Translate StepSize}" />
                 <TextBox Grid.Row="1" Grid.Column="5"
-                         Text="{Binding SudHidStep}" TextChanged="OnSudHidStepChanged" />
+                         Name="TextBoxSudHidStep" Text="{Binding SudHidStep}" TextChanged="OnSudHidStepChanged" />
             </Grid>
             <Border BorderBrush="LightGray" BorderThickness="0,0,0,1"/>
         </StackPanel>
@@ -86,6 +86,7 @@
                 <TextBlock Text="{i18n:Translate MaxDisplayedItemsCount}" FontSize="16" VerticalAlignment="Center"/>
                 <TextBox Text="{Binding MaxDisplayedItemCount}"
                          TextChanged="OnMaxDisplayedItemsChanged"
+                         Name="TextBoxMaxDisplayedItemCount"
                          Width="100"
                          VerticalAlignment="Center"/>
             </StackPanel>
@@ -98,12 +99,17 @@
                        FontWeight="Bold"
                        HorizontalAlignment="Stretch"
                        VerticalAlignment="Top"/>
-            <StackPanel Orientation="Horizontal" Margin="10" Spacing="50">
+            <StackPanel Orientation="Horizontal" Margin="10" Spacing="30">
                 <CheckBox FontSize="16" Content="{i18n:Translate EnableSongPreview}" IsChecked="{Binding SongPreviewEnabled}" />
                 <StackPanel Orientation="Horizontal" Spacing="10">
                     <TextBlock Text="{i18n:Translate SongReloadType}" FontSize="16" VerticalAlignment="Center"/>
                     <Button Classes="ActionButton" Height="40" Width="100" VerticalAlignment="Center"
                             Content="{Binding ReloadTypeName}" Click="OnSongReloadTypeChanged"/>
+                    <TextBlock Text="{i18n:Translate MinInputInterval}" FontSize="16" VerticalAlignment="Center"/>
+                    <TextBox Text="{Binding MinimumInputInterval}"
+                             TextChanged="OnMinimumInputDelayChanged"
+                             Name="TextBoxMinimumInputInterval"
+                             Width="100" VerticalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>
             <Border BorderBrush="LightGray" BorderThickness="0,0,0,1"/>

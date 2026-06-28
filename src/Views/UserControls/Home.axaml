@@ -55,11 +55,13 @@
                            VerticalAlignment="Center"/>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="5">
                     <TextBox Text="{Binding WindowSizeX}"
+                             Name="TextBoxWindowSizeX"
                              Width="100"
                              TextChanged="OnResolutionXTextChanged"
                              TextAlignment="Center"/>
                     <TextBlock Text="x" VerticalAlignment="Center" FontWeight="Bold"/>
                     <TextBox Text="{Binding WindowSizeY}"
+                             Name="TextBoxWindowSizeY"
                              Width="100"
                              TextChanged="OnResolutionYTextChanged"
                              TextAlignment="Center"/>

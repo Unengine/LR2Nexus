@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using LR2Nexus.Services;
-using LR2Nexus.Views;
 using System.Collections.ObjectModel;
 using LR2Nexus.I18n;
 

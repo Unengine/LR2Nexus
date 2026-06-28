@@ -14,6 +14,7 @@ public class MenuConverter : IValueConverter
 			"Home" => new Home(),
 			"Jukebox" => new Jukebox(),
 			"PlayOption" => new PlayOption(),
+			"SystemOption" => new SystemOption(),
 			_ => new TextBlock {
 				Text = I18nManager.Instance["WIP"],
 				FontSize = 50,
