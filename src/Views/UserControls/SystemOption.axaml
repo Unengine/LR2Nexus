@@ -38,7 +38,7 @@
                          Name="TextBoxMisslayerDuration"
                          TextChanged="OnMisslayerDurationChanged"
                          Width="80" />
-                <Border Width="110"/>
+                <Border Width="90"/>
                 <CheckBox Content="{i18n:Translate VSync}" IsChecked="{Binding EnableVSync}"/>
 <!--            seems like <maindisplay> is not working in config.xml for now.-->
 <!--                <TextBlock Text="{i18n:Translate DisplayMonitor}" />
