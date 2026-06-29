@@ -3,9 +3,9 @@ using Avalonia.Interactivity;
 using Avalonia.Threading;
 using LR2Nexus.I18n;
 using LR2Nexus.Utils;
-using LR2Nexus.ViewModels;
+using LR2Nexus.ViewModel;
 
-namespace LR2Nexus.Views;
+namespace LR2Nexus.View;
 
 public partial class LoadingWindow : Window
 {
@@ -67,8 +67,8 @@ public partial class LoadingWindow : Window
 
 	private static LoadingWindow SetupWindow(Window owner, string title, params string[] messages)
 	{
-		var width = owner.Width;
-		var height = owner.Height;
+		var width = owner.Width / owner.RenderScaling;
+		var height = owner.Height / owner.RenderScaling;
 		var win = new LoadingWindow
 		{
 			Title = title,

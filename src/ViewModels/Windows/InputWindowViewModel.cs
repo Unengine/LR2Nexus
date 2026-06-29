@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 
 
-namespace LR2Nexus.ViewModels;
+namespace LR2Nexus.ViewModel;
 
 public partial class InputWindowViewModel() : ObservableObject
 {

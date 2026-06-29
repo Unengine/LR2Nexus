@@ -3,7 +3,7 @@ using Avalonia.Data.Converters;
 using LR2Nexus.I18n;
 using System.Globalization;
 
-namespace LR2Nexus.Views;
+namespace LR2Nexus.View;
 
 public class MenuConverter : IValueConverter
 {
@@ -14,6 +14,7 @@ public class MenuConverter : IValueConverter
 			"Home" => new Home(),
 			"Jukebox" => new Jukebox(),
 			"PlayOption" => new PlayOption(),
+			"SystemOption" => new SystemOption(),
 			_ => new TextBlock {
 				Text = I18nManager.Instance["WIP"],
 				FontSize = 50,

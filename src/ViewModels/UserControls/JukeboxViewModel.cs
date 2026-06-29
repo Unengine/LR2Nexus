@@ -2,7 +2,7 @@
 using LR2Nexus.Services;
 using System.Collections.ObjectModel;
 
-namespace LR2Nexus.ViewModels
+namespace LR2Nexus.ViewModel
 {
 	public partial class JukeboxViewModel : ObservableObject
 	{

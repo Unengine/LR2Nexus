@@ -1,9 +1,9 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using LR2Nexus.Utils;
-using LR2Nexus.ViewModels;
+using LR2Nexus.ViewModel;
 
-namespace LR2Nexus.Views;
+namespace LR2Nexus.View;
 
 public partial class ConfirmWindow : Window
 {
@@ -27,8 +27,8 @@ public partial class ConfirmWindow : Window
 
 	public static async Task<bool?> PromptAsync(Window owner, string title, params string[] messages)
 	{
-		var width = owner.Width * 0.3;
-		var height = owner.Height * 0.3;
+		var width = owner.Width * 0.3 / owner.RenderScaling;
+		var height = owner.Height * 0.3 / owner.RenderScaling;
 		var win = new ConfirmWindow()
 		{
 			Title = title,

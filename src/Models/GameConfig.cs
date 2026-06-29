@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace LR2Nexus.Models
+namespace LR2Nexus.Model
 {
 	[XmlRoot("config")]
 	public class GameConfig
@@ -9,6 +9,7 @@ namespace LR2Nexus.Models
 		[XmlElement("jukebox")] public Lr2Jukebox Jukebox { get; set; } = new();
 		[XmlElement("play")] public Lr2Play Play { get; set; } = new();
 		[XmlElement("select")] public Lr2Select Select { get; set; } = new();
+		[XmlElement("sound")] public Lr2Sound Sound { get; set; } = new();
 
 		[XmlRoot("system")]
 		public class Lr2System
@@ -16,8 +17,17 @@ namespace LR2Nexus.Models
 			[XmlElement("screenmode")]
 			public int Screenmode { get; set; } = 1;
 
+			private int _vsync = 0;
 			[XmlElement("vsync")]
-			public int VSync { get; set; } = 0;
+			public int VSync
+			{
+				get => _vsync;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 1);
+					_vsync = clamped;
+				}
+			}
 
 			[XmlElement("directdraw")]
 			public int DirectDraw { get; set; } = 0;
@@ -61,14 +71,32 @@ namespace LR2Nexus.Models
 			[XmlElement("screenexrate")]
 			public int ScreenExrate { get; set; } = 100;
 
+			private int _inputInterval = 16;
 			[XmlElement("inputinterval")]
-			public int InputInterval { get; set; } = 16;
+			public int InputInterval
+			{
+				get => _inputInterval;
+				set
+				{
+					var clamped = int.Clamp(value, 8, 16);
+					_inputInterval = clamped;
+				}
+			}
 
 			[XmlElement("disablesystemkey")]
 			public int DisableSystemKey { get; set; } = 0;
 
+			private int _outputLog = 0;
 			[XmlElement("outputlog")]
-			public int OutputLog { get; set; } = 0;
+			public int OutputLog
+			{
+				get => _outputLog;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 1);
+					_outputLog = clamped;
+				}
+			}
 
 			[XmlElement("thread")]
 			public int Thread { get; set; } = 0;
@@ -76,8 +104,17 @@ namespace LR2Nexus.Models
 			[XmlElement("eventmode")]
 			public int Eventmode { get; set; } = 0;
 
+			private int _disableSkinPreview = 0;
 			[XmlElement("disableskinpreview")]
-			public int DisableSkinPreview { get; set; } = 0;
+			public int DisableSkinPreview
+			{
+				get => _disableSkinPreview;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 1);
+					_disableSkinPreview = clamped;
+				}
+			}
 
 			[XmlElement("newsongfolder")]
 			public string NewSongFolder { get; set; } = @"NEW SONG\";
@@ -194,6 +231,18 @@ namespace LR2Nexus.Models
 					_sudhidStep = clamped;
 				}
 			}
+
+			private int _misslayerDuration = 500;
+			[XmlElement("poorbga")]
+			public int MisslayerDuration
+			{
+				get => _misslayerDuration;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 5000);
+					_misslayerDuration = clamped;
+				}
+			}
 		}
 
 		[XmlRoot("select")]
@@ -236,6 +285,61 @@ namespace LR2Nexus.Models
 			}
 		}
 
+		[XmlRoot("sound")]
+		public class Lr2Sound
+		{
+			private int _soundDriver = 0;
+			[XmlElement("output")]
+			public int SoundDriver
+			{
+				get => _soundDriver;
+				set
+				{
+					var clamped = int.Clamp(value, (int)default(SoundDriver), (int)GameConfig.SoundDriver.ASIO);
+					_soundDriver = clamped;
+				}
+			}
+
+			private int _playbackDriver = 0;
+			[XmlElement("driver")]
+			public int PlaybackDriver
+			{
+				get => _playbackDriver;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 1000);
+					_playbackDriver = clamped;
+				}
+			}
+
+			private int _disableFmodEx = 1;
+			[XmlElement("disablefmod")]
+			public int DisableFmodEx
+			{
+				get => _disableFmodEx;
+				set
+				{
+					var clamped = int.Clamp(value, 0, 1);
+					_disableFmodEx = clamped;
+				}
+			}
+
+			private int _audioBufferSize = 256;
+			[XmlElement("bufferlength")]
+			public int AudioBufferSize
+			{
+				get => _audioBufferSize;
+				set
+				{
+					value = int.Clamp(value, AudioBufferSizeMin, AudioBufferSizeMax);
+					var nearest = (int)Math.Pow(2, Math.Round(Math.Log(value, 2)));
+					_audioBufferSize = nearest;
+				}
+			}
+		}
+
+		public const int AudioBufferSizeMin = 16;
+		public const int AudioBufferSizeMax = 2048;
 		public const int BitRandomSelect = 1 << 0;
 		public const int BitFavoriteFolder = 1 << 1;
 		public const int BitTop10Playcount = 1 << 2;
@@ -244,5 +348,12 @@ namespace LR2Nexus.Models
 		public const int BitPlayrank = 1 << 5;
 		public const int BitIgnoredFolder = 1 << 6;
 		public const int BitInsaneBMSFolder = 1 << 7;
+
+		public enum SoundDriver
+		{
+			DirectSound = 0,
+			WASAPI,
+			ASIO
+		}
 	}
 }

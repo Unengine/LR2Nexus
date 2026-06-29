@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using LR2Nexus.I18n;
-using LR2Nexus.Models;
+using LR2Nexus.Model;
 using LR2Nexus.Services;
 
-namespace LR2Nexus.ViewModels
+namespace LR2Nexus.ViewModel
 {
 	public partial class PlayOptionViewModel : ObservableObject
 	{
@@ -124,6 +124,9 @@ namespace LR2Nexus.ViewModels
 		[NotifyPropertyChangedFor(nameof(ReloadTypeName))]
 		private int _reloadType;
 
+		[ObservableProperty]
+		private string? _minimumInputInterval;
+
 		public string ReloadTypeName => ReloadType switch
 		{
 			0 => I18nManager.Instance["Manual"],
@@ -148,6 +151,7 @@ namespace LR2Nexus.ViewModels
 
 			SongPreviewEnabled = GameConfigService.Current.Select.Preview == 1;
 			ReloadType = GameConfigService.Current.System.AutoReload;
+			MinimumInputInterval = GameConfigService.Current.System.InputInterval.ToString();
 		}
 
 		private void UpdateFolderBit(int bit, bool isEnabled)

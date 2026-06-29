@@ -1,6 +1,6 @@
 ﻿using LR2Nexus.I18n;
 
-namespace LR2Nexus.Models
+namespace LR2Nexus.Model
 {
 	public class AppSettings
 	{

@@ -4,9 +4,9 @@ using Avalonia.Interactivity;
 using Avalonia.Threading;
 using LR2Nexus.I18n;
 using LR2Nexus.Services;
-using LR2Nexus.ViewModels;
+using LR2Nexus.ViewModel;
 
-namespace LR2Nexus.Views;
+namespace LR2Nexus.View;
 
 public partial class MainWindow : Window
 {
@@ -25,8 +25,10 @@ public partial class MainWindow : Window
 				double targetHeight = screen.WorkingArea.Height * 0.667;
 
 				var bestFit = GetClosestResolution(targetWidth, targetHeight);
-				Width = bestFit.Width;
-				Height = bestFit.Height;
+
+				var scaling = RenderScaling;
+				Width = bestFit.Width / RenderScaling;
+				Height = bestFit.Height / RenderScaling;
 			}
 		};
 

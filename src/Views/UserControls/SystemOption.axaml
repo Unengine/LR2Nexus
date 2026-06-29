@@ -1,0 +1,108 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:LR2Nexus.ViewModel"
+             xmlns:i18n="clr-namespace:LR2Nexus.I18n"
+             mc:Ignorable="d" d:DesignWidth="960" d:DesignHeight="620"
+             x:Class="LR2Nexus.View.SystemOption"
+             x:DataType="vm:SystemOptionViewModel"
+             Background="Transparent">
+    <DockPanel Margin="16,9,16,9" LastChildFill="True">
+        <StackPanel DockPanel.Dock="Top" Spacing="10" Margin="0,0,0,10">
+            <TextBlock Grid.Column="0"
+                       FontSize="18"
+                       Text="{i18n:Translate DisplaySettings}"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Top"/>
+            <StackPanel Orientation="Horizontal"
+                      HorizontalAlignment="Left"
+                      Margin="10" Spacing="10">
+                <StackPanel.Styles>
+                    <Style Selector="TextBlock">
+                        <Setter Property="FontSize" Value="16" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                    </Style>
+                    <Style Selector="TextBox">
+                        <Setter Property="Margin" Value="10, 0, 50, 0" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                    </Style>
+                    <Style Selector="CheckBox">
+                        <Setter Property="FontSize" Value="16" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                    </Style>
+                </StackPanel.Styles>
+                <TextBlock Text="{i18n:Translate MissLayerDuration}" MinWidth="200"/>
+                <TextBox Text="{Binding MisslayerDuration}"
+                         Name="TextBoxMisslayerDuration"
+                         TextChanged="OnMisslayerDurationChanged"
+                         Width="80" />
+                <Border Width="90"/>
+                <CheckBox Content="{i18n:Translate VSync}" IsChecked="{Binding EnableVSync}"/>
+<!--            seems like <maindisplay> is not working in config.xml for now.-->
+<!--                <TextBlock Text="{i18n:Translate DisplayMonitor}" />
+                <ComboBox ItemsSource="{Binding AvailableMonitors}"
+                          SelectedItem="{Binding SelectedMonitor}"
+                          SelectionChanged="OnDisplayMonitorChanged"
+                          Width="180"/>-->
+            </StackPanel>
+            <Border BorderBrush="LightGray" BorderThickness="0,0,0,1"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Top" Spacing="5" Margin="0,0,0,10">
+            <StackPanel.Styles>
+                <Style Selector="TextBlock">
+                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+                <Style Selector="TextBox">
+                    <Setter Property="Margin" Value="10, 0, 50, 0" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+                <Style Selector="CheckBox">
+                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+            </StackPanel.Styles>
+            <TextBlock Grid.Column="0"
+                       FontSize="18"
+                       Text="{i18n:Translate AudioSettings}"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Top"/>
+            <StackPanel Orientation="Horizontal"
+                      HorizontalAlignment="Left"
+                      Margin="10" Spacing="10">
+                <TextBlock Text="{i18n:Translate SoundDriver}" Width="200" />
+                <ComboBox ItemsSource="{Binding SoundDrivers}"
+                          SelectedItem="{Binding SelectedSoundDriver}"
+                          SelectionChanged="OnSoundDriverChanged"
+                          Name="SoundDriverComboBox"
+                          Margin="10, 0, 0, 0"
+                          Width="180"/>
+                <Border Width="40"/>
+                <TextBlock Text="{i18n:Translate AudioBufferSize}" />
+                <TextBox Text="{Binding AudioBufferSize}"
+                         Name="AudioBufferSizeTextBox"
+                         TextChanged="OnAudioBufferSizeChanged"
+                         Width="80"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                      HorizontalAlignment="Left"
+                      Margin="10" Spacing="10">
+                <TextBlock Text="{i18n:Translate PlaybackDriver}" Width="200" />
+                <ComboBox ItemsSource="{Binding PlaybackDrivers}"
+                          SelectedItem="{Binding SelectedPlaybackDriver}"
+                          Name="PlaybackDriverComboBox"
+                          Margin="10, 0, 0, 0"
+                          SelectionChanged="OnPlaybackDriverChanged"
+                          Width="400"/>
+                <Border Width="30"/>
+                <CheckBox Click="OnClickDisableFmodExButton"
+                          Content="{i18n:Translate DisableFmodEx}"
+                          IsChecked="{Binding DisableFmodEx}"/>
+            </StackPanel>
+            <Border BorderBrush="LightGray" BorderThickness="0,0,0,1"/>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

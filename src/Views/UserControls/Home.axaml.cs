@@ -1,13 +1,13 @@
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
-using Avalonia.Threading;
 using LR2Nexus.I18n;
 using LR2Nexus.Services;
 using LR2Nexus.src.Utils;
-using LR2Nexus.ViewModels;
+using LR2Nexus.ViewModel;
 
-namespace LR2Nexus.Views;
+namespace LR2Nexus.View;
 
 public partial class Home : UserControl
 {
@@ -19,13 +19,7 @@ public partial class Home : UserControl
 
 		DataContext = _viewModel;
 
-		// Dispatcher.UIThread.Post ensures this runs after the UI is fully rendered
-		Dispatcher.UIThread.Post(InitializeState);
-	}
-
-	private void InitializeState()
-	{
-
+		InitializeIntTextBoxEvents();
 	}
 
 	private async void OnSelectPathClick(object sender, RoutedEventArgs e)
@@ -116,13 +110,13 @@ public partial class Home : UserControl
 	private void OnResolutionXTextChanged(object? sender, TextChangedEventArgs e)
 	{
 		if (sender is not TextBox textBox) return;
-		GameConfigService.Current.System.WindowSizeX = TextBoxExtension.FilterIntegerText(textBox, default, 1920);
+		GameConfigService.Current.System.WindowSizeX = TextBoxExtension.FilterIntegerText(textBox, 1920);
 	}
 
 	private void OnResolutionYTextChanged(object? sender, TextChangedEventArgs e)
 	{
 		if (sender is not TextBox textBox) return;
-		GameConfigService.Current.System.WindowSizeY = TextBoxExtension.FilterIntegerText(textBox, default, 1080);
+		GameConfigService.Current.System.WindowSizeY = TextBoxExtension.FilterIntegerText(textBox, 1080);
 	}
 
 	private void OnScreenModeClick(object? sender, RoutedEventArgs e)
@@ -140,5 +134,22 @@ public partial class Home : UserControl
 
 		_viewModel.ScreenMode = targetValue;
 		GameConfigService.Current.System.Screenmode = targetValue;
+	}
+
+	private void InitializeIntTextBoxEvents()
+	{
+		void updateWindowSizeXEvent(object? s, FocusChangedEventArgs e) =>
+			TextBoxExtension.UpdateIntegerTextOnEvent(GameConfigService.Current.System.WindowSizeX, s, e);
+		void updateWindowSizeYEvent(object? s, FocusChangedEventArgs e) =>
+			TextBoxExtension.UpdateIntegerTextOnEvent(GameConfigService.Current.System.WindowSizeY, s, e);
+
+		TextBoxWindowSizeX.LostFocus += updateWindowSizeXEvent;
+		TextBoxWindowSizeY.LostFocus += updateWindowSizeYEvent;
+
+		Unloaded += (_, _) =>
+		{
+			TextBoxWindowSizeX.LostFocus -= updateWindowSizeXEvent;
+			TextBoxWindowSizeY.LostFocus -= updateWindowSizeYEvent;
+		};
 	}
 }

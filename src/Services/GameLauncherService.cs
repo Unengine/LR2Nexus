@@ -1,8 +1,8 @@
 ﻿using Avalonia.Controls;
 using LR2Nexus.I18n;
-using LR2Nexus.Models;
+using LR2Nexus.Model;
 using LR2Nexus.Utils;
-using LR2Nexus.Views;
+using LR2Nexus.View;
 using Microsoft.Data.Sqlite;
 
 namespace LR2Nexus.Services

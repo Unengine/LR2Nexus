@@ -2,10 +2,10 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using LR2Nexus.Utils;
-using LR2Nexus.ViewModels;
+using LR2Nexus.ViewModel;
 using System.Text.RegularExpressions;
 
-namespace LR2Nexus.Views;
+namespace LR2Nexus.View;
 
 public partial class InputWindow : Window
 {
@@ -46,8 +46,9 @@ public partial class InputWindow : Window
 
 	public static async Task<string?> PromptWithRegexAsync(Window owner, string title, string? regex, params string[] messages)
 	{
-		var width = owner.Width * 0.3;
-		var height = owner.Height * 0.3;
+		var renderScaling = owner.RenderScaling;
+		var width = owner.Width * 0.3 / owner.RenderScaling;
+		var height = owner.Height * 0.3 / owner.RenderScaling;
 		var win = new InputWindow()
 		{
 			Title = title,

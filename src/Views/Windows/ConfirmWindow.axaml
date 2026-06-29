@@ -1,18 +1,19 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        x:Class="LR2Nexus.Views.ConfirmWindow"
-        xmlns:vm="clr-namespace:LR2Nexus.ViewModels"
+        x:Class="LR2Nexus.View.ConfirmWindow"
+        xmlns:vm="clr-namespace:LR2Nexus.ViewModel"
         Title="InputWindow"
         WindowStartupLocation="CenterOwner"
-        SizeToContent="Height"
+        SizeToContent="WidthAndHeight"
         CanResize="False"
         x:DataType="vm:ConfirmWindowViewModel"
         d:DesignWidth="384"
         d:DesignHeight="216">
-        <Grid Name="RootGrid" Margin="20" RowDefinitions="*, Auto" HorizontalAlignment="Stretch">
+    <Grid Name="RootGrid" Margin="20" RowDefinitions="*, Auto" HorizontalAlignment="Stretch">
             <ContentControl Grid.Row="0"
                             Name="MessageContainer"
+                            HorizontalAlignment="Stretch"
                             VerticalAlignment="Center"/>
             
             <StackPanel Grid.Row="1" 
