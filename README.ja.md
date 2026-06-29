@@ -7,6 +7,8 @@
 Lunatic Rave 2と[OpenLR2](https://github.com/GOMazk/OpenLR2)のための次世代ランチャーです。
 
 ## 概要
+<img width="1282" height="752" alt="스크린샷 2026-06-30 005143" src="https://github.com/user-attachments/assets/4b889dce-4168-4c8e-8d09-0234986037b6" />
+
 LR2Nexusは、LR2とOpenLR2のために設計された、モダンで軽量なランチャーです。設定の管理やゲームの起動を簡単に行える、効率的なインターフェースを提供します。
 LR2の各種設定を快適に変更可能です。Jukeboxやカスタムフォルダ、オーディオ設定などの複雑な項目も直感的に操作できます。
 
