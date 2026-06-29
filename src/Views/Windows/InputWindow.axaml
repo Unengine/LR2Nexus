@@ -10,7 +10,8 @@
         x:DataType="vm:InputWindowViewModel"
         d:DesignWidth="384"
         d:DesignHeight="216">
-        <DockPanel Margin="20" LastChildFill="True">
+    <Viewbox Stretch="Uniform">
+        <DockPanel Margin="20">
             <Button DockPanel.Dock="Bottom"
                     Name="ConfirmButton"
                     Classes="ActionButton"
@@ -29,4 +30,5 @@
                          HorizontalAlignment="Stretch" />
             </StackPanel>
         </DockPanel>
+    </Viewbox>
 </Window>

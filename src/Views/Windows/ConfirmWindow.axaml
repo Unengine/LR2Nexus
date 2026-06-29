@@ -10,6 +10,7 @@
         x:DataType="vm:ConfirmWindowViewModel"
         d:DesignWidth="384"
         d:DesignHeight="216">
+    <Viewbox Stretch="Uniform">
         <Grid Name="RootGrid" Margin="20" RowDefinitions="*, Auto" HorizontalAlignment="Stretch">
             <ContentControl Grid.Row="0"
                             Name="MessageContainer"
@@ -35,4 +36,5 @@
                         Click="OnCancelClick" />
             </StackPanel>
         </Grid>
+    </Viewbox>
 </Window>

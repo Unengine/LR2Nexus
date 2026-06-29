@@ -27,8 +27,8 @@ public partial class ConfirmWindow : Window
 
 	public static async Task<bool?> PromptAsync(Window owner, string title, params string[] messages)
 	{
-		var width = owner.Width * 0.3;
-		var height = owner.Height * 0.3;
+		var width = owner.Width * 0.3 / owner.RenderScaling;
+		var height = owner.Height * 0.3 / owner.RenderScaling;
 		var win = new ConfirmWindow()
 		{
 			Title = title,

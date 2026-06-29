@@ -25,8 +25,10 @@ public partial class MainWindow : Window
 				double targetHeight = screen.WorkingArea.Height * 0.667;
 
 				var bestFit = GetClosestResolution(targetWidth, targetHeight);
-				Width = bestFit.Width;
-				Height = bestFit.Height;
+
+				var scaling = RenderScaling;
+				Width = bestFit.Width / RenderScaling;
+				Height = bestFit.Height / RenderScaling;
 			}
 		};
 

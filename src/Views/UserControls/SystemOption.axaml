@@ -79,7 +79,7 @@
                           SelectionChanged="OnSoundDriverChanged"
                           Name="SoundDriverComboBox"
                           Margin="10, 0, 0, 0"
-                          Width="120"/>
+                          Width="180"/>
                 <Border Width="40"/>
                 <CheckBox Click="OnClickDisableFmodExButton"
                           Content="{i18n:Translate DisableFmodEx}"
@@ -98,7 +98,7 @@
                 <Border Width="20"/>
                 <TextBlock Text="{i18n:Translate AudioBufferSize}" />
                 <TextBox Text="{Binding AudioBufferSize}"
-                         Name="TextBoxAudioBufferSize"
+                         Name="AudioBufferSizeTextBox"
                          TextChanged="OnAudioBufferSizeChanged"
                          Width="80"/>
             </StackPanel>

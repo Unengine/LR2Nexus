@@ -4,12 +4,15 @@
         x:Class="LR2Nexus.View.LoadingWindow"
         xmlns:vm="clr-namespace:LR2Nexus.ViewModel"
         Title="InputWindow"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         CanResize="False"
         SizeToContent="Height"
         x:DataType="vm:LoadingWindowViewModel"
         Background="#11000000"
+
         d:DesignWidth="1280"
         d:DesignHeight="720">
-        <ContentControl Name="MessageContainer" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    	<Viewbox Stretch="Uniform">
+            <ContentControl Name="MessageContainer" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Viewbox>
 </Window>

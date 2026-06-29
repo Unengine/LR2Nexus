@@ -47,12 +47,12 @@ public partial class SystemOption : UserControl
 			TextBoxExtension.UpdateIntegerTextOnEvent(GameConfigService.Current.Sound.AudioBufferSize, s, e);
 
 		TextBoxMisslayerDuration.LostFocus += updateMisslayerDurationEvent;
-		TextBoxAudioBufferSize.LostFocus += updateAudioBufferSizeEvent;
+		AudioBufferSizeTextBox.LostFocus += updateAudioBufferSizeEvent;
 
 		Unloaded += (_, _) =>
 		{
 			TextBoxMisslayerDuration.LostFocus -= updateMisslayerDurationEvent;
-			TextBoxAudioBufferSize.LostFocus -= updateAudioBufferSizeEvent;
+			AudioBufferSizeTextBox.LostFocus -= updateAudioBufferSizeEvent;
 		};
 	}
 
@@ -141,5 +141,6 @@ public partial class SystemOption : UserControl
 		if (sender is not CheckBox checkBox) return;
 		PlaybackDriverComboBox.IsEnabled = !checkBox.IsChecked ?? true;
 		SoundDriverComboBox.IsEnabled = !checkBox.IsChecked ?? true;
+		AudioBufferSizeTextBox.IsEnabled = !checkBox.IsChecked ?? true;
 	}
 }

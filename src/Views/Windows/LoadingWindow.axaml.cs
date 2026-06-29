@@ -67,8 +67,8 @@ public partial class LoadingWindow : Window
 
 	private static LoadingWindow SetupWindow(Window owner, string title, params string[] messages)
 	{
-		var width = owner.Width;
-		var height = owner.Height;
+		var width = owner.Width / owner.RenderScaling;
+		var height = owner.Height / owner.RenderScaling;
 		var win = new LoadingWindow
 		{
 			Title = title,
