@@ -338,7 +338,7 @@ namespace LR2Nexus.Model
 			}
 		}
 
-		public const int AudioBufferSizeMin = 32;
+		public const int AudioBufferSizeMin = 16;
 		public const int AudioBufferSizeMax = 2048;
 		public const int BitRandomSelect = 1 << 0;
 		public const int BitFavoriteFolder = 1 << 1;

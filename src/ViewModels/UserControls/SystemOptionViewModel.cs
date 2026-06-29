@@ -6,7 +6,6 @@ using LR2Nexus.Model;
 using LR2Nexus.Services;
 using LR2Nexus.View;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace LR2Nexus.ViewModel
 {
@@ -29,7 +28,7 @@ namespace LR2Nexus.ViewModel
 			}
 		}
 
-		public ObservableCollection<ISoundDriver> SoundDrivers { get; set; } = [];
+		public List<ISoundDriver> SoundDrivers { get; set; } = [];
 
 		[ObservableProperty]
 		public ISoundDriver? _selectedSoundDriver;
@@ -37,6 +36,7 @@ namespace LR2Nexus.ViewModel
 		public ObservableCollection<string> PlaybackDrivers { get; set; } = [];
 
 		[ObservableProperty]
+		[NotifyPropertyChangedFor(nameof(PlaybackDrivers))]
 		public string? _selectedPlaybackDriver;
 
 		[ObservableProperty]

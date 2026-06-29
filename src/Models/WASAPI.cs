@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
+using NAudio.CoreAudioApi;
 
 namespace LR2Nexus.Model
 {
@@ -14,6 +15,10 @@ namespace LR2Nexus.Model
 			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 			{
 				IsSupported = true;
+
+				using var enumerator = new MMDeviceEnumerator();
+				var devices = enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active);
+				Drivers = devices.Select(x => x.FriendlyName).ToList().AsReadOnly();
 			}
 		}
 

@@ -4,6 +4,7 @@ using LR2Nexus.Model;
 using LR2Nexus.Services;
 using LR2Nexus.src.Utils;
 using LR2Nexus.ViewModel;
+using System.Collections.ObjectModel;
 
 namespace LR2Nexus.View;
 
@@ -75,17 +76,25 @@ public partial class SystemOption : UserControl
 			comboBox.SelectedItem is not ISoundDriver driver) return;
 
 		_viewModel.SelectedSoundDriver = driver;
-		if (driver.Drivers != null && driver.Drivers.Count > 0)
+		var playbackDriverCount = driver.Drivers?.Count;
+
+		_viewModel.PlaybackDrivers.Clear();
+		if (driver.Drivers != null && playbackDriverCount > 0)
 		{
 			foreach (var playbackDriver in driver.Drivers)
 			{
 				_viewModel.PlaybackDrivers.Add(playbackDriver);
 			}
-			_viewModel.SelectedPlaybackDriver = driver.Drivers.First();
+
+			var playbackDriverIndex = GameConfigService.Current.Sound.PlaybackDriver;
+			_viewModel.SelectedPlaybackDriver = playbackDriverIndex < playbackDriverCount ?
+				driver.Drivers[playbackDriverIndex] : driver.Drivers.First();
+			GameConfigService.Current.Sound.PlaybackDriver = playbackDriverIndex < playbackDriverCount ?
+				playbackDriverIndex : 0;
 		}
 		else
 		{
-			_viewModel.PlaybackDrivers.Clear();
+			_viewModel.SelectedPlaybackDriver = null;
 		}
 
 		GameConfigService.Current.Sound.SoundDriver = (int)driver.DriverType;
@@ -97,10 +106,18 @@ public partial class SystemOption : UserControl
 			comboBox.SelectedItem is not string driverName ||
 			_viewModel.SelectedSoundDriver?.Drivers == null) return;
 
-		var index = _viewModel.SelectedSoundDriver.Drivers.IndexOf(driverName);
-		var isFound = index > -1;
-		_viewModel.SelectedPlaybackDriver = isFound ? driverName : null;
-		GameConfigService.Current.Sound.PlaybackDriver = isFound ? index : 0;
+		var drivers = _viewModel.SelectedSoundDriver.Drivers;
+		var playbackDriverCount = drivers.Count;
+		var targetIndex = drivers.IndexOf(driverName);
+		if (targetIndex >= 0)
+		{
+			GameConfigService.Current.Sound.PlaybackDriver =
+				targetIndex < playbackDriverCount ? targetIndex : 0;
+		}
+		else
+		{
+			_viewModel.SelectedPlaybackDriver = null;
+		}
 	}
 
 	private void OnAudioBufferSizeChanged(object? sender, TextChangedEventArgs e)

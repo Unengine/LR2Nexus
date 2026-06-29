@@ -80,12 +80,10 @@
                           Name="SoundDriverComboBox"
                           Margin="10, 0, 0, 0"
                           Width="120"/>
-                <Border Width="120"/>
-                <TextBlock Text="{i18n:Translate AudioBufferSize}" />
-                <TextBox Text="{Binding AudioBufferSize}"
-                         Name="TextBoxAudioBufferSize"
-                         TextChanged="OnAudioBufferSizeChanged"
-                         Width="80"/>
+                <Border Width="40"/>
+                <CheckBox Click="OnClickDisableFmodExButton"
+                          Content="{i18n:Translate DisableFmodEx}"
+                          IsChecked="{Binding DisableFmodEx}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                       HorizontalAlignment="Left"
@@ -96,11 +94,13 @@
                           Name="PlaybackDriverComboBox"
                           Margin="10, 0, 0, 0"
                           SelectionChanged="OnPlaybackDriverChanged"
-                          Width="180"/>
-                <Border Width="60"/>
-                <CheckBox Click="OnClickDisableFmodExButton"
-                          Content="{i18n:Translate DisableFmodEx}"
-                          IsChecked="{Binding DisableFmodEx}"/>
+                          Width="400"/>
+                <Border Width="20"/>
+                <TextBlock Text="{i18n:Translate AudioBufferSize}" />
+                <TextBox Text="{Binding AudioBufferSize}"
+                         Name="TextBoxAudioBufferSize"
+                         TextChanged="OnAudioBufferSizeChanged"
+                         Width="80"/>
             </StackPanel>
             <Border BorderBrush="LightGray" BorderThickness="0,0,0,1"/>
         </StackPanel>
