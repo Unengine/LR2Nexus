@@ -6,12 +6,11 @@
         Title="InputWindow"
         WindowStartupLocation="CenterOwner"
         CanResize="False"
-        SizeToContent="Height"
+        SizeToContent="WidthAndHeight"
         x:DataType="vm:AlertWindowViewModel"
         d:DesignWidth="384"
         d:DesignHeight="216">
-    <Viewbox Stretch="Uniform">
-        <DockPanel Margin="20">
+    <DockPanel Margin="10">
             <Button DockPanel.Dock="Bottom"
                     Name="ConfirmButton"
                     Classes="ActionButton"
@@ -19,7 +18,6 @@
                     Click="OnConfirmClick"
                     HorizontalAlignment="Center"
                     Margin="0,20,0,0" />
-            <ContentControl Name="MessageContainer" VerticalAlignment="Top" />
+            <ContentControl Name="MessageContainer" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
         </DockPanel>
-    </Viewbox>
 </Window>

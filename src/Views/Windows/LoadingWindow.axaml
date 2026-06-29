@@ -6,13 +6,10 @@
         Title="InputWindow"
         WindowStartupLocation="CenterScreen"
         CanResize="False"
-        SizeToContent="Height"
         x:DataType="vm:LoadingWindowViewModel"
         Background="#11000000"
 
         d:DesignWidth="1280"
         d:DesignHeight="720">
-    	<Viewbox Stretch="Uniform">
-            <ContentControl Name="MessageContainer" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        </Viewbox>
+        <ContentControl Name="MessageContainer" HorizontalAlignment="Center" VerticalAlignment="Center" />
 </Window>

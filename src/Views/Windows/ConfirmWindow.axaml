@@ -5,15 +5,15 @@
         xmlns:vm="clr-namespace:LR2Nexus.ViewModel"
         Title="InputWindow"
         WindowStartupLocation="CenterOwner"
-        SizeToContent="Height"
+        SizeToContent="WidthAndHeight"
         CanResize="False"
         x:DataType="vm:ConfirmWindowViewModel"
         d:DesignWidth="384"
         d:DesignHeight="216">
-    <Viewbox Stretch="Uniform">
-        <Grid Name="RootGrid" Margin="20" RowDefinitions="*, Auto" HorizontalAlignment="Stretch">
+    <Grid Name="RootGrid" Margin="20" RowDefinitions="*, Auto" HorizontalAlignment="Stretch">
             <ContentControl Grid.Row="0"
                             Name="MessageContainer"
+                            HorizontalAlignment="Stretch"
                             VerticalAlignment="Center"/>
             
             <StackPanel Grid.Row="1" 
@@ -36,5 +36,4 @@
                         Click="OnCancelClick" />
             </StackPanel>
         </Grid>
-    </Viewbox>
 </Window>

@@ -6,12 +6,11 @@
         Title="InputWindow"
         WindowStartupLocation="CenterOwner"
         CanResize="False"
-        SizeToContent="Height"
+        SizeToContent="WidthAndHeight"
         x:DataType="vm:InputWindowViewModel"
         d:DesignWidth="384"
         d:DesignHeight="216">
-    <Viewbox Stretch="Uniform">
-        <DockPanel Margin="20">
+    <DockPanel Margin="20">
             <Button DockPanel.Dock="Bottom"
                     Name="ConfirmButton"
                     Classes="ActionButton"
@@ -23,6 +22,7 @@
         
             <StackPanel DockPanel.Dock="Top" VerticalAlignment="Top">
                 <ContentControl Name="MessageContainer"
+                                HorizontalAlignment="Stretch"
                                 VerticalAlignment="Top" />
         
                 <TextBox Name="InputField"
@@ -30,5 +30,4 @@
                          HorizontalAlignment="Stretch" />
             </StackPanel>
         </DockPanel>
-    </Viewbox>
 </Window>
