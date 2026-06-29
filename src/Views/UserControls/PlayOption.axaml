@@ -84,6 +84,7 @@
             </Grid>
             <StackPanel Orientation="Horizontal" Margin="10" Spacing="10">
                 <TextBlock Text="{i18n:Translate MaxDisplayedItemsCount}" FontSize="16" VerticalAlignment="Center"/>
+                <Border Width="20"/>
                 <TextBox Text="{Binding MaxDisplayedItemCount}"
                          TextChanged="OnMaxDisplayedItemsChanged"
                          Name="TextBoxMaxDisplayedItemCount"

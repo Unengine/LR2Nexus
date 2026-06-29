@@ -11,6 +11,7 @@ namespace LR2Nexus.View;
 public partial class SystemOption : UserControl
 {
 	private SystemOptionViewModel _viewModel = new();
+	private GameConfig.SoundDriver? _previousSoundDriverType = null;
 
 	private bool _isInitialized = false;
 
@@ -85,12 +86,21 @@ public partial class SystemOption : UserControl
 			{
 				_viewModel.PlaybackDrivers.Add(playbackDriver);
 			}
-
 			var playbackDriverIndex = GameConfigService.Current.Sound.PlaybackDriver;
-			_viewModel.SelectedPlaybackDriver = playbackDriverIndex < playbackDriverCount ?
-				driver.Drivers[playbackDriverIndex] : driver.Drivers.First();
-			GameConfigService.Current.Sound.PlaybackDriver = playbackDriverIndex < playbackDriverCount ?
-				playbackDriverIndex : 0;
+
+			if (_previousSoundDriverType == null)
+			{
+				_viewModel.SelectedPlaybackDriver = playbackDriverIndex < playbackDriverCount ?
+					driver.Drivers[playbackDriverIndex] : driver.Drivers.First();
+				GameConfigService.Current.Sound.PlaybackDriver = playbackDriverIndex < playbackDriverCount ?
+					playbackDriverIndex : 0;
+				_previousSoundDriverType = driver.DriverType;
+			}
+			else
+			{
+				_viewModel.SelectedPlaybackDriver = driver.Drivers.First();
+				GameConfigService.Current.Sound.PlaybackDriver = 0;
+			}
 		}
 		else
 		{
