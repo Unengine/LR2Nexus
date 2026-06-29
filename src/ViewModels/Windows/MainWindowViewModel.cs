@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using LR2Nexus.Services;
-using LR2Nexus.Views;
+using LR2Nexus.View;
 using LR2Nexus.I18n;
 
-namespace LR2Nexus.ViewModels
+namespace LR2Nexus.ViewModel
 {
 	public partial class MainWindowViewModel : ObservableObject
 	{

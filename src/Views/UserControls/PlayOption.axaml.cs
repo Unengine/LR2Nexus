@@ -2,9 +2,9 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using LR2Nexus.Services;
 using LR2Nexus.src.Utils;
-using LR2Nexus.ViewModels;
+using LR2Nexus.ViewModel;
 
-namespace LR2Nexus.Views;
+namespace LR2Nexus.View;
 
 public partial class PlayOption : UserControl
 {

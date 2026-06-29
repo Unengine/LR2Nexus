@@ -1,9 +1,9 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using LR2Nexus.Utils;
-using LR2Nexus.ViewModels;
+using LR2Nexus.ViewModel;
 
-namespace LR2Nexus.Views;
+namespace LR2Nexus.View;
 
 public partial class ConfirmWindow : Window
 {

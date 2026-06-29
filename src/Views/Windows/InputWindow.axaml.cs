@@ -2,10 +2,10 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using LR2Nexus.Utils;
-using LR2Nexus.ViewModels;
+using LR2Nexus.ViewModel;
 using System.Text.RegularExpressions;
 
-namespace LR2Nexus.Views;
+namespace LR2Nexus.View;
 
 public partial class InputWindow : Window
 {

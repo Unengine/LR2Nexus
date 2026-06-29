@@ -4,9 +4,9 @@ using Avalonia.Media;
 using Avalonia.Platform.Storage;
 using LR2Nexus.I18n;
 using LR2Nexus.Services;
-using LR2Nexus.ViewModels;
+using LR2Nexus.ViewModel;
 
-namespace LR2Nexus.Views;
+namespace LR2Nexus.View;
 
 public partial class Jukebox : UserControl
 {

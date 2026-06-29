@@ -1,5 +1,5 @@
 ﻿
-namespace LR2Nexus.Models
+namespace LR2Nexus.Model
 {
 	public class MonitorInfo
 	{

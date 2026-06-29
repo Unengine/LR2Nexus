@@ -1,5 +1,5 @@
 ﻿using Avalonia.Controls;
-using LR2Nexus.Models;
+using LR2Nexus.Model;
 using LR2Nexus.Utils;
 using System.Xml.Linq;
 

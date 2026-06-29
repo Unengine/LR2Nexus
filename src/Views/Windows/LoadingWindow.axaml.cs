@@ -3,9 +3,9 @@ using Avalonia.Interactivity;
 using Avalonia.Threading;
 using LR2Nexus.I18n;
 using LR2Nexus.Utils;
-using LR2Nexus.ViewModels;
+using LR2Nexus.ViewModel;
 
-namespace LR2Nexus.Views;
+namespace LR2Nexus.View;
 
 public partial class LoadingWindow : Window
 {

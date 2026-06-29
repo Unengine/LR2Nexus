@@ -3,7 +3,7 @@ using Avalonia.Data.Converters;
 using LR2Nexus.I18n;
 using System.Globalization;
 
-namespace LR2Nexus.Views;
+namespace LR2Nexus.View;
 
 public class MenuConverter : IValueConverter
 {

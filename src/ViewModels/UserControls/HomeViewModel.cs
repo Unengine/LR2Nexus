@@ -3,7 +3,7 @@ using LR2Nexus.Services;
 using System.Collections.ObjectModel;
 using LR2Nexus.I18n;
 
-namespace LR2Nexus.ViewModels
+namespace LR2Nexus.ViewModel
 {
 	public partial class HomeViewModel : ObservableObject
 	{

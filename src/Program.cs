@@ -1,5 +1,5 @@
 ﻿using Avalonia;
-using LR2Nexus.Views;
+using LR2Nexus.View;
 
 namespace LR2Nexus;
 

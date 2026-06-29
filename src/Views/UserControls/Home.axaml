@@ -2,10 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:LR2Nexus.ViewModels"
+             xmlns:vm="clr-namespace:LR2Nexus.ViewModel"
              xmlns:i18n="clr-namespace:LR2Nexus.I18n"
              mc:Ignorable="d" d:DesignWidth="960" d:DesignHeight="620"
-             x:Class="LR2Nexus.Views.Home"
+             x:Class="LR2Nexus.View.Home"
              x:DataType="vm:HomeViewModel"
              Background="Transparent">
     <Grid Margin="16,9,16,9">

@@ -1,7 +1,7 @@
 ﻿using LR2Nexus.Utils;
 using Microsoft.Data.Sqlite;
 
-namespace LR2Nexus.Models;
+namespace LR2Nexus.Model;
 
 public class DBScoreRow(SqliteDataReader reader)
 {

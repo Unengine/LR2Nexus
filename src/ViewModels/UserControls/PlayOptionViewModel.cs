@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using LR2Nexus.I18n;
-using LR2Nexus.Models;
+using LR2Nexus.Model;
 using LR2Nexus.Services;
 
-namespace LR2Nexus.ViewModels
+namespace LR2Nexus.ViewModel
 {
 	public partial class PlayOptionViewModel : ObservableObject
 	{

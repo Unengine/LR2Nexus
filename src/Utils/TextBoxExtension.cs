@@ -6,10 +6,11 @@ namespace LR2Nexus.src.Utils
 {
 	public static class TextBoxExtension
 	{
-		public static int FilterIntegerText(TextBox textBox, int maxValue)
+		public static int FilterIntegerText(TextBox textBox, int maxValue, Func<int, int>? valueCorrectionFunc = null)
 		{
 			var (value, text) = FilterIntegerStringFromTextBox(textBox);
 			value = value > maxValue ? maxValue : value;
+			if (valueCorrectionFunc != null) value = valueCorrectionFunc(value);
 
 			if (textBox.Text != text)
 			{

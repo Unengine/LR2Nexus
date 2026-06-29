@@ -1,4 +1,4 @@
-﻿using LR2Nexus.Models;
+﻿using LR2Nexus.Model;
 using Microsoft.Data.Sqlite;
 using System.Text.Json;
 using System.Text.RegularExpressions;
