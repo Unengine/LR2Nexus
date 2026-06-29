@@ -141,7 +141,7 @@ namespace LR2Nexus.Model
 				get => _windowSizeX;
 				set
 				{
-					var clamped = int.Clamp(value, 640, 1920);
+					var clamped = int.Clamp(value, WindowSizeXMin, WindowSizeXMax);
 					_windowSizeX = clamped;
 				}
 			}
@@ -153,7 +153,7 @@ namespace LR2Nexus.Model
 				get => _windowSizeY;
 				set
 				{
-					var clamped = int.Clamp(value, 480, 1080);
+					var clamped = int.Clamp(value, WindowSizeYMin, WindowSizeYMax);
 					_windowSizeY = clamped;
 				}
 			}
@@ -338,6 +338,10 @@ namespace LR2Nexus.Model
 			}
 		}
 
+		public const int WindowSizeXMax = 5120;
+		public const int WindowSizeXMin = 640;
+		public const int WindowSizeYMax = 2880;
+		public const int WindowSizeYMin = 480;
 		public const int AudioBufferSizeMin = 16;
 		public const int AudioBufferSizeMax = 2048;
 		public const int BitRandomSelect = 1 << 0;

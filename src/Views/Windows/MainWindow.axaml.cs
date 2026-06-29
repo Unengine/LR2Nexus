@@ -177,7 +177,9 @@ public partial class MainWindow : Window
 			(640.0, 360.0),
 			(1280.0, 720.0),
 			(1920.0, 1080.0),
-			(2560.0, 1440.0)
+			(2560.0, 1440.0),
+			(3840.0, 2160.0),
+			(5120.0, 2880.0)
 		};
 
 		return resolutions.OrderBy(r => Math.Pow(r.Item1 - width, 2) + Math.Pow(r.Item2 - height, 2)).First();
