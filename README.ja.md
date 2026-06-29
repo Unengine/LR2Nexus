@@ -2,6 +2,8 @@
 
 **動作環境: 本アプリケーションの実行には [.NET 9.0 デスクトップランタイム](https://dotnet.microsoft.com/ko-kr/download/dotnet/9.0) が必要です。実行前にランタイムがインストールされていることを確認してください。**
 
+### [最新のリリースはここで！](https://github.com/Unengine/LR2Nexus/releases)
+
 Lunatic Rave 2と[OpenLR2](https://github.com/GOMazk/OpenLR2)のための次世代ランチャーです。
 
 ## 概要

@@ -1,5 +1,8 @@
 # LR2Nexus
+
 **필수 요구 사항: 본 애플리케이션을 실행하려면 [.NET 9.0 데스크탑 런타임](https://dotnet.microsoft.com/ko-kr/download/dotnet/9.0)이 필요합니다. 실행 전 해당 런타임이 설치되어 있는지 확인해 주세요.**
+
+### [여기서 최신 클라이언트를 다운받으세요!](https://github.com/Unengine/LR2Nexus/releases)
 
 Lunatic Rave 2와 [OpenLR2](https://github.com/GOMazk/OpenLR2)를 위한 차세대 런처입니다.
 

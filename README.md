@@ -4,6 +4,8 @@
 
 [English](README.md) | [한국어](README.ko.md) | [日本語](README.ja.md)
 
+### [Download the newest release here!](https://github.com/Unengine/LR2Nexus/releases)
+
 A new generation launcher for Lunatic Rave 2 and [OpenLR2](https://github.com/GOMazk/OpenLR2)
 
 ## About
