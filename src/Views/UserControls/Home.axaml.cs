@@ -3,6 +3,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using LR2Nexus.I18n;
+using LR2Nexus.Model;
 using LR2Nexus.Services;
 using LR2Nexus.src.Utils;
 using LR2Nexus.ViewModel;
@@ -110,13 +111,13 @@ public partial class Home : UserControl
 	private void OnResolutionXTextChanged(object? sender, TextChangedEventArgs e)
 	{
 		if (sender is not TextBox textBox) return;
-		GameConfigService.Current.System.WindowSizeX = TextBoxExtension.FilterIntegerText(textBox, 1920);
+		GameConfigService.Current.System.WindowSizeX = TextBoxExtension.FilterIntegerText(textBox, GameConfig.WindowSizeXMax);
 	}
 
 	private void OnResolutionYTextChanged(object? sender, TextChangedEventArgs e)
 	{
 		if (sender is not TextBox textBox) return;
-		GameConfigService.Current.System.WindowSizeY = TextBoxExtension.FilterIntegerText(textBox, 1080);
+		GameConfigService.Current.System.WindowSizeY = TextBoxExtension.FilterIntegerText(textBox, GameConfig.WindowSizeYMax);
 	}
 
 	private void OnScreenModeClick(object? sender, RoutedEventArgs e)

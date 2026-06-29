@@ -1,10 +1,20 @@
 # LR2Nexus
+
 **필수 요구 사항: 본 애플리케이션을 실행하려면 [.NET 9.0 데스크탑 런타임](https://dotnet.microsoft.com/ko-kr/download/dotnet/9.0)이 필요합니다. 실행 전 해당 런타임이 설치되어 있는지 확인해 주세요.**
 
-[OpenLR2](https://github.com/GOMazk/OpenLR2)를 위한 차세대 런처입니다.
+### [여기서 최신 클라이언트를 다운받으세요!](https://github.com/Unengine/LR2Nexus/releases)
+
+Lunatic Rave 2와 [OpenLR2](https://github.com/GOMazk/OpenLR2)를 위한 차세대 런처입니다.
 
 ## 소개
-LR2Nexus는 OpenLR2 생태계를 위해 설계된 현대적이고 가벼운 런처입니다. 설정을 관리하고 게임을 간편하게 실행할 수 있는 효율적인 인터페이스를 제공합니다.
+<img width="1282" height="752" alt="스크린샷 2026-06-30 005350" src="https://github.com/user-attachments/assets/9b6a5a72-906d-4358-bdac-a38337a059ff" />
+
+LR2Nexus는 LR2/OpenLR2를 위해 설계된 현대적이고 가벼운 런처입니다. 설정을 관리하고 게임을 간편하게 실행할 수 있는 효율적인 인터페이스를 제공합니다.
+
+로케일을 별도로 설정할 필요로 없이 LR2의 설정을 편하게 변경하세요.
+주크박스 설정, 커스텀 폴더 설정, 오디오 설정 같은 복잡한 설정들을 직관적으로 변경할 수 있습니다.
+
+OpenLR2/순정 LR2 둘 다 지원합니다!
 
 ## 경고: 알파 릴리즈
 이 버전은 **알파(Alpha) 테스트 버전**입니다. 현재 활발히 개발 중인 단계이므로 치명적인 버그, 성능 문제 또는 예기치 않은 동작이 발생할 수 있습니다. **사용으로 인해 발생하는 모든 결과에 대한 책임은 사용자 본인에게 있습니다.**
