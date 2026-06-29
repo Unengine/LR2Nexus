@@ -4,10 +4,14 @@
 
 [English](README.md) | [한국어](README.ko.md) | [日本語](README.ja.md)
 
-A new generation launcher for [OpenLR2](https://github.com/GOMazk/OpenLR2)
+A new generation launcher for Lunatic Rave 2 and [OpenLR2](https://github.com/GOMazk/OpenLR2)
 
 ## About
-LR2Nexus is a modern, lightweight launcher designed for the OpenLR2 ecosystem. It provides a streamlined interface to manage your settings and launch the game with ease.
+LR2Nexus is a modern, lightweight launcher designed for the LR2/OpenLR2. It provides a streamlined interface to manage your settings and launch the game with ease.
+
+Effortlessly configure your LR2 settings without the need for manual locale adjustments. LR2Nexus makes managing complex settings—such as jukebox, custom folders, and audio configurations—simple and intuitive.
+
+It fully supports both vanilla LR2 and OpenLR2!
 
 ## Warning: Alpha Release
 This is an **alpha release**. Please be aware that this software is still in active development and may contain critical bugs, performance issues, or cause unexpected behavior.
